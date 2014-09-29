@@ -16,7 +16,7 @@ function genOptions(numVar) {
   }
 }
 
-var optimal = {};
+var optimal;
 
 function zeroes(str, num) {
   while (str.length < num) {
@@ -145,8 +145,10 @@ function calcZeroNodes(numVars) {
 }
 
 //...
-var numVars = 1;
-genOptions(numVars);
-calcZeroNodes(numVars);
-//calcOneNode(numVars);
-console.log(optimal);
+for (var numVars = 1; numVars <= 2; numVars++) {
+  optimal = {};
+  genOptions(numVars);
+  calcZeroNodes(numVars);
+  calcOneNode(numVars);
+  console.log(numVars, optimal);
+}
