@@ -67,10 +67,13 @@ function printAtomBehavior(atom, numVars) {
   return str;
 }
 function getVals(numVars) {
-  if (numVars !== 2) {
-    throw new Error('not implemented yet!');
+  var chars, vals = [];
+  for(var i=0; i<Math.pow(2, numVars); i++) {
+    vals.push(zeroes(i.toString(2), numVars).split('').map(function(str) {
+      return (str === '1');
+    }));
   }
-  return [[false, false], [false, true], [true, false], [true, true]];
+  return vals;
 }
 function printCondBehavior(params, numVars) {
   if (option[params[0]] === '0') {
