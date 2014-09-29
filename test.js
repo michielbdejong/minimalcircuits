@@ -61,7 +61,9 @@ function calcAtomBehavior(atom, vals) {
 function printAtomBehavior(atom, numVars) {
   var str = '', vals;
   for (var i=0; i<Math.pow(2, numVars); i++) {
-    vals = i.toString(2).split('');
+    vals = i.toString(2).split('').map(function(str) {
+      return (str === '1');
+    });
     str += calcAtomBehavior(atom, vals);
   }
   return str;
@@ -146,5 +148,5 @@ function calcZeroNodes(numVars) {
 var numVars = 1;
 genOptions(numVars);
 calcZeroNodes(numVars);
-calcOneNode(numVars);
+//calcOneNode(numVars);
 console.log(optimal);
