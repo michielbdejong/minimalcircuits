@@ -75,19 +75,30 @@ function getVals(numVars) {
   }
   return vals;
 }
+function getPattern(varNum, sign, numVars) {
+  if (varNum === 0) {
+    return [(sign ? 0 : 1),(sign ? 0 : 1),(sign ? 1 : 0),(sign ? 1 : 0)];
+  }
+  if (varNum === 1) {
+    return [(sign ? 0 : 1),(sign ? 1 : 0),(sign ? 0 : 1),(sign ? 1 : 0)];
+  }
+  throw new Exception('getPattern oops', varNum, sign, numVars);
+}
 function printCondBehavior(params, numVars) {
   if (option[params[0]] === '0') {
     pattern = [0, 0, 0, 0];
   } else if (option[params[0]] === '1') {
     pattern = [1, 1, 1, 1];
-  } else if (option[params[0]] === 'a\'') {
-    pattern = [1, 1, 0, 0];
-  } else if (option[params[0]] === 'a') {
-    pattern = [0, 0, 1, 1];
-  } else if (option[params[0]] === 'b\'') {
-    pattern = [1, 0, 1, 0];
-  } else if (option[params[0]] === 'b') {
-    pattern = [0, 1, 0, 1];
+  } else {
+    for (var i=0; i<letter.length; i++) {
+      if (option[params[0]] === letter[i]+'\'') {
+        pattern = getPattern(i, false, numVars);
+        break;
+      } else if (option[params[0]] === letter[i]) {
+        pattern = getPattern(i, true, numVars);
+        break;
+      }
+    }
   }
   for (var i=0; i<pattern.length; i++) {
     if (pattern[i] === 0) {
