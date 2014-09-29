@@ -76,13 +76,22 @@ function getVals(numVars) {
   return vals;
 }
 function getPattern(varNum, sign, numVars) {
-  if (varNum === 0) {
-    return [(sign ? 0 : 1),(sign ? 0 : 1),(sign ? 1 : 0),(sign ? 1 : 0)];
+  var pattern = [];
+  //varNum/numVars 0/1 -> 01              1 1
+  //varNum/numVars 0/2 -> 0011            1 2
+  //varNum/numVars 1/2 -> 01 01           2 1
+  //varNum/numVars 0/3 -> 00001111        1 4
+  //varNum/numVars 1/3 -> 0011 0011       2 2
+  //varNum/numVars 2/3 -> 01 01 01 01     3 1
+  for (var i=0; i<varNum+1; i++) {
+    for (var j=0; j<Math.pow(2, numVars-varNum); j++) {
+      pattern.push(sign ? 1 : 0);
+    }
+    for (var j=0; j<Math.pow(2, numVars-varNum); j++) {
+      pattern.push(sign ? 0 : 1);
+    }
   }
-  if (varNum === 1) {
-    return [(sign ? 0 : 1),(sign ? 1 : 0),(sign ? 0 : 1),(sign ? 1 : 0)];
-  }
-  throw new Exception('getPattern oops', varNum, sign, numVars);
+  return pattern;
 }
 function printCondBehavior(params, numVars) {
   if (option[params[0]] === '0') {
