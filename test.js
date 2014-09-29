@@ -122,7 +122,7 @@ function printCondBehavior(params, numVars) {
   return str;
 }
 function calcOneNode(numVars) {
-  var numOptions = 6;
+  var numOptions = numVars*2+2;
   var numPositions = 3;
   var numCombinations = Math.pow(numOptions, numPositions);
 
@@ -143,7 +143,7 @@ function calcZeroNodes(numVars) {
 }
 
 //...
-var numVars = 2;
+var numVars = 1;
 genOptions(numVars);
 calcZeroNodes(numVars);
 calcOneNode(numVars);
