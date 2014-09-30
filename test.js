@@ -56,7 +56,7 @@ function calcAtomBehavior(atom, vals) {
       return (vals[i]?'1':'0');
     }
   }
-  throw new Error('unknown option ' + JSON.stringify(atom));
+  throw new Error('unknown option, atom:' + JSON.stringify(atom) + ', vals:' + JSON.stringify(vals));
 }
 function printAtomBehavior(atom, numVars) {
   var str = '', vals;
@@ -97,9 +97,15 @@ function getPattern(varNum, sign, numVars) {
 }
 function printCondBehavior(params, numVars) {
   if (option[params[0]] === '0') {
-    pattern = [0, 0, 0, 0];
+    pattern = [];
+    for (var i=0; i<Math.pow(2, numVars); i++) {
+      pattern.push(0);
+    }
   } else if (option[params[0]] === '1') {
-    pattern = [1, 1, 1, 1];
+    pattern = [];
+    for (var i=0; i<Math.pow(2, numVars); i++) {
+      pattern.push(1);
+    }
   } else {
     for (var i=0; i<letter.length; i++) {
       if (option[params[0]] === letter[i]+'\'') {
@@ -144,11 +150,19 @@ function calcZeroNodes(numVars) {
   }
 }
 
+function printOutcome(numVars, optimal) {
+  console.log('outcome for '+numVars+' vars:');
+  for (var i=0; i<Math.pow(2, Math.pow(2, numVars)); i++) {
+    var thisStr = zeroes(i.toString(2), Math.pow(2, numVars));
+    console.log(thisStr+': '+optimal[thisStr]);
+  }
+}
+
 //...
-for (var numVars = 1; numVars <= 2; numVars++) {
+for (var numVars = 1; numVars <= 3; numVars++) {
   optimal = {};
   genOptions(numVars);
   calcZeroNodes(numVars);
   calcOneNode(numVars);
-  console.log(numVars, optimal);
+  printOutcome(numVars, optimal);
 }
