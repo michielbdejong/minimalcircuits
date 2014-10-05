@@ -19,17 +19,17 @@ function printExpression(expression) {
 }
 
 //print out the results:
-function printOutcome(numVars, optimal, undefinedOnly) {
+function printOutcome(numVars, optimal, silent) {
   var thisStr, somethingStillUndefined = false;
-  console.log(
-      (undefinedOnly?'undefined':'outcome')
-      + ' for ' + numVars + ' vars:');
+  if (!silent) {
+    console.log('outcome for ' + numVars + ' vars:');
+  }
   for (var i=0; i<Math.pow(2, Math.pow(2, numVars)); i++) {
     thisStr = zeroes(i.toString(2), Math.pow(2, numVars));
     if (typeof optimal[thisStr] === 'undefined') {
       somethingStillUndefined = true;
     }
-    if (!undefinedOnly || typeof optimal[thisStr] === 'undefined') {
+    if (!silent) {
       console.log(thisStr+': '+printExpression(optimal[thisStr]));
     }
   }

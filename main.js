@@ -236,6 +236,6 @@ function runForVars(numVars, previousResults) {
 
 //...
 var previousResults = {};
-for (var numVars = 1; numVars <= 3; numVars++) {
+for (var numVars = 1; numVars <= 4; numVars++) {
   previousResults = runForVars(numVars, previousResults);
 }
