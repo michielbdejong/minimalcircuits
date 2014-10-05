@@ -1,181 +1,241 @@
-var numVar = 1;
-var expressions = {};
-var option;
-var letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+//basic structures:
+//- expression (string '0', '1', 'x\'', 'x' or array [expression, expression, expression])
+//- valuation (array numVars booleans)
 
-function genOptions(numVar) {
-  option = [];
-  option.push('0');
-  option.push('1');
-  for (var i=0; i<numVar; i++) {
-    option.push(letter[i]+'\'');
-    option.push(letter[i]);
+//for a bit of inline unit testing:
+function assert(a, b) {
+  if (JSON.stringify(a) !== JSON.stringify(b)) {
+    console.log('assertion failed', a, b);
+    die();
   }
 }
 
-var optimal;
+//generate the n-th atom option:
+function makeAtom(option) {
+  var atoms = {
+    0: '0', 1: '1',
+    2: 'a\'', 3: 'a',
+    4: 'b\'', 5: 'b',
+    6: 'c\'', 7: 'c',
+    8: 'd\'', 9: 'd'
+  };
+  return atoms[option];
+}
 
+//adds zeroes at the front of a string:
 function zeroes(str, num) {
   while (str.length < num) {
     str = '0'+str;
   }
   return str;
 }
-function calcParams(iteration, numOptions, numPositions) {
-  return zeroes(iteration.toString(numOptions), numPositions).split('').map(function(str) {
-    return parseInt(str);
-  });
+assert(zeroes('abc', 0), 'abc');
+assert(zeroes('abc', 10), '0000000abc');
+
+function fillSubTree(treeStructure, positions, startPosition, subTrees) {
+  var tree = [];
+  var j=startPosition;
+  var k=0;
+  for(i=0; i<treeStructure.length; i++) {
+    if (treeStructure[i]==='1') {
+      tree.push([positions[j], positions[j+1], positions[j+2]]);
+      j += 3;
+    } else if (treeStructure[i]==='2') {
+      tree.push(subTree[k]);
+      k++;
+    } else {
+      tree.push(positions[j]);
+      j++;
+    }
+  }
+  return {
+    tree: tree,
+    numPositionsUsed: j
+  };
+}
+function fillTree(treeStructure, positions) {
+  var i, j, mainTree, subTree;
+  if (typeof treeStructure === 'undefined') {
+    return positions;
+  }
+  if (treeStructure.length === 3) {
+    subTree = fillSubTree(treeStructure, positions, 0, []);
+    //console.log('tree for', treeStructure, positions, subTree.tree);
+    return subTree.tree;
+  }
+  if (treeStructure.length === 6) {
+    subTree = fillSubTree(treeStructure.substring(3), positions, 0, []);
+    mainTree = fillSubTree(treeStructure.substring(0, 3), positions, subTree.numPositionsUsed, [subTree.tree]);
+    //console.log('tree for', treeStructure, positions, mainTree.tree);
+    return mainTree.tree;
+  }
+  console.log('could not fill tree', treeStructure, positions);
+  die();
 }
 
-function printExpression(params) {
-  if (Array.isArray(params)) {
-    return '(if '+printExpression(params[0])
-      +' then '+printExpression(params[1])
-      +' else '+printExpression(params[2])
+//generates the iteration-th possible expression tree, given numInnerNodes, treeStructure, and options per leaf:
+function calcNthExpression(iteration, numInnerNodes, treeStructure, numVars) {
+  var numPositions = 1 + 2 * numInnerNodes,
+    numAtomOptions = 2 + 2 * numVars;
+  if (numVars > 4) {
+    console.log('sorry, we use iteration.toString and can only parseInt from digits 0-9');
+    die();
+  }
+  if (numInnerNodes === 0) {
+    return makeAtom(iteration);
+  }
+  var positions = zeroes(iteration.toString(numAtomOptions), numPositions).split('').map(function(str) {
+    return makeAtom(parseInt(str));
+  });
+  return fillTree(treeStructure, positions);
+}
+
+//print an expression tree in a human-readable string format:
+function printExpression(expression) {
+  if (Array.isArray(expression)) {
+    return '(if '+printExpression(expression[0])
+      +' then '+printExpression(expression[1])
+      +' else '+printExpression(expression[2])
       +')';
-  } else {
-    return option[params];
+  } else {//atoms are readily human-readable:
+    return expression;
   }
 }
-function calcAtomBehavior(atom, vals) {
-  if (option[atom] === '0') {
-    return '0';
+
+//calculates whether an atomic expression is true or false, given a valuation (array of booleans) vals:
+function calcAtomicExpressionTruth(expression, vals) {
+  if (expression === '0') {
+    return false;
   }
-  if (option[atom] === '1') {
-    return '1';
+  if (expression === '1') {
+    return true;
   }
+  var letter = ['a', 'b', 'c', 'd'];
   for (var i=0; i<letter.length; i++) {
-    if (option[atom] === letter[i]+'\'') {
-      return (vals[i]?'0':'1');
+    if (expression === letter[i]+'\'') {
+      return (!vals[i]);
     }
-    if (option[atom] === letter[i]) {
-      return (vals[i]?'1':'0');
+    if (expression === letter[i]) {
+      return (vals[i]);
     }
   }
-  throw new Error('unknown option, atom:' + JSON.stringify(atom) + ', vals:' + JSON.stringify(vals));
+  throw new Error('unknown atom or missing valuation:' + JSON.stringify(expression) + ', vals:' + JSON.stringify(vals));
 }
-function printAtomBehavior(atom, numVars) {
+assert(calcAtomicExpressionTruth('a', [false]), false);
+
+//calculates whether an expression is true or false, given a valuation (array of booleans) vals:
+function calcExpressionTruth(expression, vals) {
+  if (Array.isArray(expression)) {
+    if (calcExpressionTruth(expression[0], vals)) {
+      return calcExpressionTruth(expression[1], vals);
+    } else {
+      return calcExpressionTruth(expression[2], vals);
+    }
+  } else {
+    return calcAtomicExpressionTruth(expression, vals);
+  }
+}
+assert(calcExpressionTruth(['a', 'b', '0'], [false, true]), false);
+
+//prints out how the expression behaves for various valuations, as a string of 0's and 1's
+function printExpressionBehavior(expression, numVars) {
   var str = '', vals;
   for (var i=0; i<Math.pow(2, numVars); i++) {
-    vals = i.toString(2).split('').map(function(str) {
+    vals = zeroes(i.toString(2), numVars).split('').map(function(str) {
       return (str === '1');
     });
-    str += calcAtomBehavior(atom, vals);
+    str += (calcExpressionTruth(expression, vals) ? '1' : '0');
   }
   return str;
 }
-function getVals(numVars) {
-  var chars, vals = [];
-  for(var i=0; i<Math.pow(2, numVars); i++) {
-    vals.push(zeroes(i.toString(2), numVars).split('').map(function(str) {
-      return (str === '1');
-    }));
-  }
-  return vals;
-}
-function getPattern(varNum, sign, numVars) {
-  var pattern = [];
-  //varNum/numVars 0/1 -> 01              1 1
-  //varNum/numVars 0/2 -> 0011            1 2
-  //varNum/numVars 1/2 -> 01 01           2 1
-  //varNum/numVars 0/3 -> 00001111        1 4
-  //varNum/numVars 1/3 -> 0011 0011       2 2
-  //varNum/numVars 2/3 -> 01 01 01 01     3 1
-  for (var i=0; i<varNum+1; i++) {
-    for (var j=0; j<Math.pow(2, numVars-varNum); j++) {
-      pattern.push(sign ? 1 : 0);
-    }
-    for (var j=0; j<Math.pow(2, numVars-varNum); j++) {
-      pattern.push(sign ? 0 : 1);
-    }
-  }
-  return pattern;
-}
-function printCondBehavior(params, numVars) {
-  if (option[params[0]] === '0') {
-    pattern = [];
-    for (var i=0; i<Math.pow(2, numVars); i++) {
-      pattern.push(0);
-    }
-  } else if (option[params[0]] === '1') {
-    pattern = [];
-    for (var i=0; i<Math.pow(2, numVars); i++) {
-      pattern.push(1);
-    }
+assert(printExpressionBehavior(['a', 'b', '0'], 2), '0001');
+
+function calcTreeStructures(numInnerNodes) {
+  if (numInnerNodes <= 1) {
+    return [undefined];
+  } else if (numInnerNodes === 2) {
+    return [
+      '010',// '001',
+      '100'
+    ];
+  } else if (numInnerNodes === 3) {
+    return ['011', '101',// '110',
+//      '020010', '020001', '020100',
+//      '002010', '002001', '002100',
+//      '200010', '200001', '200100',
+    ];
+  } else if (numInnerNodes === 4) {
+    return ['111',
+//      '021010', '021001', '021100',
+//      '012010', '012001', '012100',
+//      '201010', '201001', '201100',
+//      '120010', '120001', '120100',
+//      '102010', '102001', '102100',
+//      '210010', '210001', '210100',
+//      '020110', '020011', '020101',
+//      '002110', '002011', '002101',
+//      '200110', '200011', '200101',
+    ];
   } else {
-    for (var i=0; i<letter.length; i++) {
-      if (option[params[0]] === letter[i]+'\'') {
-        pattern = getPattern(i, false, numVars);
-        break;
-      } else if (option[params[0]] === letter[i]) {
-        pattern = getPattern(i, true, numVars);
-        break;
+    console.log('cannot yet calculate tree structures for ' + numInnerNodes + ' inner nodes!');
+    die();
+  }
+}
+
+function calcFor(numInnerNodes, numVars, optimal) {
+  var i, j, somethingStillUndefined,
+    numPositions = 1 + numInnerNodes *2,
+    numAtomOptions = 2 + 2*numVars,
+    numCombinations = Math.pow(numAtomOptions, numPositions),
+    treeStructures = calcTreeStructures(numInnerNodes);
+  console.log('calc for ' + numInnerNodes + ' inner nodes, ' + numVars + ' vars; '
+      + numPositions + ' positions and ' + numAtomOptions + ' atom options make for '
+      + numCombinations + ' combinations times ' + treeStructures.length + ' tree structures to loop through:');
+  startTime = new Date().getTime();
+  for (i=0; i<treeStructures.length; i++) {
+    console.log('still undefined before tree structure '+treeStructures[i]);
+    somethingStillUndefined = printOutcome(numVars, optimal, true);
+    if(somethingStillUndefined) {
+      for (j=0; j<numCombinations; j++) {
+        var expression = calcNthExpression(j, numInnerNodes, treeStructures[i], numVars);
+        if (!optimal[printExpressionBehavior(expression, numVars)]) {
+          optimal[printExpressionBehavior(expression, numVars)] = printExpression(expression);
+          console.log(printExpression(expression));
+        }
       }
     }
   }
-  for (var i=0; i<pattern.length; i++) {
-    if (pattern[i] === 0) {
-      pattern[i] = 2;
-    }
-  }
-  var vals = getVals(numVars);
-  var str = '';
-  for (var i=0; i<vals.length; i++) {
-    str += calcAtomBehavior(params[pattern[i]], vals[i]);
-  }
-  return str;
+  console.log('Spent '+(new Date().getTime() - startTime)/1000+' seconds.');
+  return optimal;
 }
 
-function calcTwoNodes(numVars) {
-  var numOptions = numVars*2+2;
-  var numPositions = 5;
-  var numTrees = 2; // [[a,b,c], d, e] and [a, [b,c,d], e]  - [a, b, [c,d,e]] is rotatable to [a, [c,d,e], b]
-  var numCombinations = Math.pow(numOptions, numPositions);
-  var i, theseParams;
-  for (i=0; i<numCombinations; i++) {
-    theseParams = calcParams(i, numOptions, numPositions);
-    if (!optimal[printCondBehavior(theseParams, numVars)]) {
-      optimal[printCondBehavior(theseParams, numVars)] = printExpression(theseParams);
-    }
-  }
-}
-
-function calcOneNode(numVars) {
-  var numOptions = numVars*2+2;
-  var numPositions = 3;
-  var numCombinations = Math.pow(numOptions, numPositions);
-  var i, theseParams;
-  for (i=0; i<numCombinations; i++) {
-    theseParams = calcParams(i, numOptions, numPositions);
-    if (!optimal[printCondBehavior(theseParams, numVars)]) {
-      optimal[printCondBehavior(theseParams, numVars)] = printExpression(theseParams);
-    }
-  }
-}
-
-function calcZeroNodes(numVars) {
-  for (var i=0; i<option.length; i++) {
-    if (!optimal[printAtomBehavior(i, numVars)]) {
-      optimal[printAtomBehavior(i, numVars)] = option[i];
-    }
-  }
-}
-
-function printOutcome(numVars, optimal) {
-  console.log('outcome for '+numVars+' vars:');
+//print out the results:
+function printOutcome(numVars, optimal, undefinedOnly) {
+  var thisStr, somethingStillUndefined = false;
+  console.log(
+      (undefinedOnly?'undefined':'outcome')
+      + ' for ' + numVars + ' vars:');
   for (var i=0; i<Math.pow(2, Math.pow(2, numVars)); i++) {
-    var thisStr = zeroes(i.toString(2), Math.pow(2, numVars));
-    console.log(thisStr+': '+optimal[thisStr]);
+    thisStr = zeroes(i.toString(2), Math.pow(2, numVars));
+    if (typeof optimal[thisStr] === 'undefined') {
+      somethingStillUndefined = true;
+    }
+    if (!undefinedOnly || typeof optimal[thisStr] === 'undefined') {
+      console.log(thisStr+': '+optimal[thisStr]);
+    }
   }
+  return somethingStillUndefined;
+}
+
+function runForVars(numVars) {
+  var optimal = {}, numInnerNodes;
+  for (numInnerNodes = 0; numInnerNodes <= numVars; numInnerNodes++) {
+    optimal = calcFor(numInnerNodes, numVars, optimal);
+  }
+  printOutcome(numVars, optimal);
 }
 
 //...
 for (var numVars = 1; numVars <= 3; numVars++) {
-  optimal = {};
-  genOptions(numVars);
-  calcZeroNodes(numVars);
-  calcOneNode(numVars);
-  calcTwoNodes(numVars);
-  printOutcome(numVars, optimal);
+  runForVars(numVars);
 }

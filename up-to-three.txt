@@ -1,0 +1,1383 @@
+calc for 0 inner nodes, 1 vars; 1 positions and 4 atom options make for 4 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 1 vars:
+00: undefined
+01: undefined
+10: undefined
+11: undefined
+0
+1
+a'
+a
+Spent 0.002 seconds.
+calc for 1 inner nodes, 1 vars; 3 positions and 4 atom options make for 64 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 1 vars:
+Spent 0 seconds.
+outcome for 1 vars:
+00: 0
+01: a
+10: a'
+11: 1
+calc for 0 inner nodes, 2 vars; 1 positions and 6 atom options make for 6 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 2 vars:
+0000: undefined
+0001: undefined
+0010: undefined
+0011: undefined
+0100: undefined
+0101: undefined
+0110: undefined
+0111: undefined
+1000: undefined
+1001: undefined
+1010: undefined
+1011: undefined
+1100: undefined
+1101: undefined
+1110: undefined
+1111: undefined
+0
+1
+a'
+a
+b'
+b
+Spent 0.005 seconds.
+calc for 1 inner nodes, 2 vars; 3 positions and 6 atom options make for 216 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 2 vars:
+0001: undefined
+0010: undefined
+0100: undefined
+0110: undefined
+0111: undefined
+1000: undefined
+1001: undefined
+1011: undefined
+1101: undefined
+1110: undefined
+(if a' then 0 else b')
+(if a' then 0 else b)
+(if a' then 1 else b')
+(if a' then 1 else b)
+(if a' then b' else 0)
+(if a' then b' else 1)
+(if a' then b' else b)
+(if a' then b else 0)
+(if a' then b else 1)
+(if a' then b else b')
+Spent 0.017 seconds.
+calc for 2 inner nodes, 2 vars; 5 positions and 6 atom options make for 7776 combinations times 2 tree structures to loop through:
+still undefined before tree structure 010
+undefined for 2 vars:
+still undefined before tree structure 100
+undefined for 2 vars:
+Spent 0.001 seconds.
+outcome for 2 vars:
+0000: 0
+0001: (if a' then 0 else b)
+0010: (if a' then 0 else b')
+0011: a
+0100: (if a' then b else 0)
+0101: b
+0110: (if a' then b else b')
+0111: (if a' then b else 1)
+1000: (if a' then b' else 0)
+1001: (if a' then b' else b)
+1010: b'
+1011: (if a' then b' else 1)
+1100: a'
+1101: (if a' then 1 else b)
+1110: (if a' then 1 else b')
+1111: 1
+calc for 0 inner nodes, 3 vars; 1 positions and 8 atom options make for 8 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 3 vars:
+00000000: undefined
+00000001: undefined
+00000010: undefined
+00000011: undefined
+00000100: undefined
+00000101: undefined
+00000110: undefined
+00000111: undefined
+00001000: undefined
+00001001: undefined
+00001010: undefined
+00001011: undefined
+00001100: undefined
+00001101: undefined
+00001110: undefined
+00001111: undefined
+00010000: undefined
+00010001: undefined
+00010010: undefined
+00010011: undefined
+00010100: undefined
+00010101: undefined
+00010110: undefined
+00010111: undefined
+00011000: undefined
+00011001: undefined
+00011010: undefined
+00011011: undefined
+00011100: undefined
+00011101: undefined
+00011110: undefined
+00011111: undefined
+00100000: undefined
+00100001: undefined
+00100010: undefined
+00100011: undefined
+00100100: undefined
+00100101: undefined
+00100110: undefined
+00100111: undefined
+00101000: undefined
+00101001: undefined
+00101010: undefined
+00101011: undefined
+00101100: undefined
+00101101: undefined
+00101110: undefined
+00101111: undefined
+00110000: undefined
+00110001: undefined
+00110010: undefined
+00110011: undefined
+00110100: undefined
+00110101: undefined
+00110110: undefined
+00110111: undefined
+00111000: undefined
+00111001: undefined
+00111010: undefined
+00111011: undefined
+00111100: undefined
+00111101: undefined
+00111110: undefined
+00111111: undefined
+01000000: undefined
+01000001: undefined
+01000010: undefined
+01000011: undefined
+01000100: undefined
+01000101: undefined
+01000110: undefined
+01000111: undefined
+01001000: undefined
+01001001: undefined
+01001010: undefined
+01001011: undefined
+01001100: undefined
+01001101: undefined
+01001110: undefined
+01001111: undefined
+01010000: undefined
+01010001: undefined
+01010010: undefined
+01010011: undefined
+01010100: undefined
+01010101: undefined
+01010110: undefined
+01010111: undefined
+01011000: undefined
+01011001: undefined
+01011010: undefined
+01011011: undefined
+01011100: undefined
+01011101: undefined
+01011110: undefined
+01011111: undefined
+01100000: undefined
+01100001: undefined
+01100010: undefined
+01100011: undefined
+01100100: undefined
+01100101: undefined
+01100110: undefined
+01100111: undefined
+01101000: undefined
+01101001: undefined
+01101010: undefined
+01101011: undefined
+01101100: undefined
+01101101: undefined
+01101110: undefined
+01101111: undefined
+01110000: undefined
+01110001: undefined
+01110010: undefined
+01110011: undefined
+01110100: undefined
+01110101: undefined
+01110110: undefined
+01110111: undefined
+01111000: undefined
+01111001: undefined
+01111010: undefined
+01111011: undefined
+01111100: undefined
+01111101: undefined
+01111110: undefined
+01111111: undefined
+10000000: undefined
+10000001: undefined
+10000010: undefined
+10000011: undefined
+10000100: undefined
+10000101: undefined
+10000110: undefined
+10000111: undefined
+10001000: undefined
+10001001: undefined
+10001010: undefined
+10001011: undefined
+10001100: undefined
+10001101: undefined
+10001110: undefined
+10001111: undefined
+10010000: undefined
+10010001: undefined
+10010010: undefined
+10010011: undefined
+10010100: undefined
+10010101: undefined
+10010110: undefined
+10010111: undefined
+10011000: undefined
+10011001: undefined
+10011010: undefined
+10011011: undefined
+10011100: undefined
+10011101: undefined
+10011110: undefined
+10011111: undefined
+10100000: undefined
+10100001: undefined
+10100010: undefined
+10100011: undefined
+10100100: undefined
+10100101: undefined
+10100110: undefined
+10100111: undefined
+10101000: undefined
+10101001: undefined
+10101010: undefined
+10101011: undefined
+10101100: undefined
+10101101: undefined
+10101110: undefined
+10101111: undefined
+10110000: undefined
+10110001: undefined
+10110010: undefined
+10110011: undefined
+10110100: undefined
+10110101: undefined
+10110110: undefined
+10110111: undefined
+10111000: undefined
+10111001: undefined
+10111010: undefined
+10111011: undefined
+10111100: undefined
+10111101: undefined
+10111110: undefined
+10111111: undefined
+11000000: undefined
+11000001: undefined
+11000010: undefined
+11000011: undefined
+11000100: undefined
+11000101: undefined
+11000110: undefined
+11000111: undefined
+11001000: undefined
+11001001: undefined
+11001010: undefined
+11001011: undefined
+11001100: undefined
+11001101: undefined
+11001110: undefined
+11001111: undefined
+11010000: undefined
+11010001: undefined
+11010010: undefined
+11010011: undefined
+11010100: undefined
+11010101: undefined
+11010110: undefined
+11010111: undefined
+11011000: undefined
+11011001: undefined
+11011010: undefined
+11011011: undefined
+11011100: undefined
+11011101: undefined
+11011110: undefined
+11011111: undefined
+11100000: undefined
+11100001: undefined
+11100010: undefined
+11100011: undefined
+11100100: undefined
+11100101: undefined
+11100110: undefined
+11100111: undefined
+11101000: undefined
+11101001: undefined
+11101010: undefined
+11101011: undefined
+11101100: undefined
+11101101: undefined
+11101110: undefined
+11101111: undefined
+11110000: undefined
+11110001: undefined
+11110010: undefined
+11110011: undefined
+11110100: undefined
+11110101: undefined
+11110110: undefined
+11110111: undefined
+11111000: undefined
+11111001: undefined
+11111010: undefined
+11111011: undefined
+11111100: undefined
+11111101: undefined
+11111110: undefined
+11111111: undefined
+0
+1
+a'
+a
+b'
+b
+c'
+c
+Spent 0.019 seconds.
+calc for 1 inner nodes, 3 vars; 3 positions and 8 atom options make for 512 combinations times 1 tree structures to loop through:
+still undefined before tree structure undefined
+undefined for 3 vars:
+00000001: undefined
+00000010: undefined
+00000011: undefined
+00000100: undefined
+00000101: undefined
+00000110: undefined
+00000111: undefined
+00001000: undefined
+00001001: undefined
+00001010: undefined
+00001011: undefined
+00001100: undefined
+00001101: undefined
+00001110: undefined
+00010000: undefined
+00010001: undefined
+00010010: undefined
+00010011: undefined
+00010100: undefined
+00010101: undefined
+00010110: undefined
+00010111: undefined
+00011000: undefined
+00011001: undefined
+00011010: undefined
+00011011: undefined
+00011100: undefined
+00011101: undefined
+00011110: undefined
+00011111: undefined
+00100000: undefined
+00100001: undefined
+00100010: undefined
+00100011: undefined
+00100100: undefined
+00100101: undefined
+00100110: undefined
+00100111: undefined
+00101000: undefined
+00101001: undefined
+00101010: undefined
+00101011: undefined
+00101100: undefined
+00101101: undefined
+00101110: undefined
+00101111: undefined
+00110000: undefined
+00110001: undefined
+00110010: undefined
+00110100: undefined
+00110101: undefined
+00110110: undefined
+00110111: undefined
+00111000: undefined
+00111001: undefined
+00111010: undefined
+00111011: undefined
+00111100: undefined
+00111101: undefined
+00111110: undefined
+00111111: undefined
+01000000: undefined
+01000001: undefined
+01000010: undefined
+01000011: undefined
+01000100: undefined
+01000101: undefined
+01000110: undefined
+01000111: undefined
+01001000: undefined
+01001001: undefined
+01001010: undefined
+01001011: undefined
+01001100: undefined
+01001101: undefined
+01001110: undefined
+01001111: undefined
+01010000: undefined
+01010001: undefined
+01010010: undefined
+01010011: undefined
+01010100: undefined
+01010110: undefined
+01010111: undefined
+01011000: undefined
+01011001: undefined
+01011010: undefined
+01011011: undefined
+01011100: undefined
+01011101: undefined
+01011110: undefined
+01011111: undefined
+01100000: undefined
+01100001: undefined
+01100010: undefined
+01100011: undefined
+01100100: undefined
+01100101: undefined
+01100110: undefined
+01100111: undefined
+01101000: undefined
+01101001: undefined
+01101010: undefined
+01101011: undefined
+01101100: undefined
+01101101: undefined
+01101110: undefined
+01101111: undefined
+01110000: undefined
+01110001: undefined
+01110010: undefined
+01110011: undefined
+01110100: undefined
+01110101: undefined
+01110110: undefined
+01110111: undefined
+01111000: undefined
+01111001: undefined
+01111010: undefined
+01111011: undefined
+01111100: undefined
+01111101: undefined
+01111110: undefined
+01111111: undefined
+10000000: undefined
+10000001: undefined
+10000010: undefined
+10000011: undefined
+10000100: undefined
+10000101: undefined
+10000110: undefined
+10000111: undefined
+10001000: undefined
+10001001: undefined
+10001010: undefined
+10001011: undefined
+10001100: undefined
+10001101: undefined
+10001110: undefined
+10001111: undefined
+10010000: undefined
+10010001: undefined
+10010010: undefined
+10010011: undefined
+10010100: undefined
+10010101: undefined
+10010110: undefined
+10010111: undefined
+10011000: undefined
+10011001: undefined
+10011010: undefined
+10011011: undefined
+10011100: undefined
+10011101: undefined
+10011110: undefined
+10011111: undefined
+10100000: undefined
+10100001: undefined
+10100010: undefined
+10100011: undefined
+10100100: undefined
+10100101: undefined
+10100110: undefined
+10100111: undefined
+10101000: undefined
+10101001: undefined
+10101011: undefined
+10101100: undefined
+10101101: undefined
+10101110: undefined
+10101111: undefined
+10110000: undefined
+10110001: undefined
+10110010: undefined
+10110011: undefined
+10110100: undefined
+10110101: undefined
+10110110: undefined
+10110111: undefined
+10111000: undefined
+10111001: undefined
+10111010: undefined
+10111011: undefined
+10111100: undefined
+10111101: undefined
+10111110: undefined
+10111111: undefined
+11000000: undefined
+11000001: undefined
+11000010: undefined
+11000011: undefined
+11000100: undefined
+11000101: undefined
+11000110: undefined
+11000111: undefined
+11001000: undefined
+11001001: undefined
+11001010: undefined
+11001011: undefined
+11001101: undefined
+11001110: undefined
+11001111: undefined
+11010000: undefined
+11010001: undefined
+11010010: undefined
+11010011: undefined
+11010100: undefined
+11010101: undefined
+11010110: undefined
+11010111: undefined
+11011000: undefined
+11011001: undefined
+11011010: undefined
+11011011: undefined
+11011100: undefined
+11011101: undefined
+11011110: undefined
+11011111: undefined
+11100000: undefined
+11100001: undefined
+11100010: undefined
+11100011: undefined
+11100100: undefined
+11100101: undefined
+11100110: undefined
+11100111: undefined
+11101000: undefined
+11101001: undefined
+11101010: undefined
+11101011: undefined
+11101100: undefined
+11101101: undefined
+11101110: undefined
+11101111: undefined
+11110001: undefined
+11110010: undefined
+11110011: undefined
+11110100: undefined
+11110101: undefined
+11110110: undefined
+11110111: undefined
+11111000: undefined
+11111001: undefined
+11111010: undefined
+11111011: undefined
+11111100: undefined
+11111101: undefined
+11111110: undefined
+(if a' then 0 else b')
+(if a' then 0 else b)
+(if a' then 0 else c')
+(if a' then 0 else c)
+(if a' then 1 else b')
+(if a' then 1 else b)
+(if a' then 1 else c')
+(if a' then 1 else c)
+(if a' then b' else 0)
+(if a' then b' else 1)
+(if a' then b' else b)
+(if a' then b' else c')
+(if a' then b' else c)
+(if a' then b else 0)
+(if a' then b else 1)
+(if a' then b else b')
+(if a' then b else c')
+(if a' then b else c)
+(if a' then c' else 0)
+(if a' then c' else 1)
+(if a' then c' else b')
+(if a' then c' else b)
+(if a' then c' else c)
+(if a' then c else 0)
+(if a' then c else 1)
+(if a' then c else b')
+(if a' then c else b)
+(if a' then c else c')
+(if b' then 0 else c')
+(if b' then 0 else c)
+(if b' then 1 else c')
+(if b' then 1 else c)
+(if b' then a' else c')
+(if b' then a' else c)
+(if b' then a else c')
+(if b' then a else c)
+(if b' then c' else 0)
+(if b' then c' else 1)
+(if b' then c' else a')
+(if b' then c' else a)
+(if b' then c' else c)
+(if b' then c else 0)
+(if b' then c else 1)
+(if b' then c else a')
+(if b' then c else a)
+(if b' then c else c')
+(if c' then a' else b')
+(if c' then a' else b)
+(if c' then a else b')
+(if c' then a else b)
+(if c' then b' else a')
+(if c' then b' else a)
+(if c' then b else a')
+(if c' then b else a)
+Spent 0.064 seconds.
+calc for 2 inner nodes, 3 vars; 5 positions and 8 atom options make for 32768 combinations times 2 tree structures to loop through:
+still undefined before tree structure 010
+undefined for 3 vars:
+00000001: undefined
+00000010: undefined
+00000100: undefined
+00000110: undefined
+00000111: undefined
+00001000: undefined
+00001001: undefined
+00001011: undefined
+00001101: undefined
+00001110: undefined
+00010000: undefined
+00010010: undefined
+00010011: undefined
+00010100: undefined
+00010101: undefined
+00010110: undefined
+00010111: undefined
+00011000: undefined
+00011001: undefined
+00011010: undefined
+00011100: undefined
+00011110: undefined
+00011111: undefined
+00100000: undefined
+00100001: undefined
+00100011: undefined
+00100100: undefined
+00100101: undefined
+00100110: undefined
+00101000: undefined
+00101001: undefined
+00101010: undefined
+00101011: undefined
+00101100: undefined
+00101101: undefined
+00101111: undefined
+00110001: undefined
+00110010: undefined
+00110100: undefined
+00110110: undefined
+00110111: undefined
+00111000: undefined
+00111001: undefined
+00111011: undefined
+00111101: undefined
+00111110: undefined
+01000000: undefined
+01000001: undefined
+01000010: undefined
+01000011: undefined
+01000101: undefined
+01000110: undefined
+01001000: undefined
+01001001: undefined
+01001010: undefined
+01001011: undefined
+01001100: undefined
+01001101: undefined
+01001111: undefined
+01010001: undefined
+01010010: undefined
+01010100: undefined
+01010110: undefined
+01010111: undefined
+01011000: undefined
+01011001: undefined
+01011011: undefined
+01011101: undefined
+01011110: undefined
+01100000: undefined
+01100001: undefined
+01100010: undefined
+01100011: undefined
+01100100: undefined
+01100101: undefined
+01100111: undefined
+01101000: undefined
+01101001: undefined
+01101010: undefined
+01101011: undefined
+01101100: undefined
+01101101: undefined
+01101110: undefined
+01101111: undefined
+01110000: undefined
+01110001: undefined
+01110011: undefined
+01110101: undefined
+01110110: undefined
+01111000: undefined
+01111001: undefined
+01111010: undefined
+01111011: undefined
+01111100: undefined
+01111101: undefined
+01111110: undefined
+01111111: undefined
+10000000: undefined
+10000001: undefined
+10000010: undefined
+10000011: undefined
+10000100: undefined
+10000101: undefined
+10000110: undefined
+10000111: undefined
+10001001: undefined
+10001010: undefined
+10001100: undefined
+10001110: undefined
+10001111: undefined
+10010000: undefined
+10010001: undefined
+10010010: undefined
+10010011: undefined
+10010100: undefined
+10010101: undefined
+10010110: undefined
+10010111: undefined
+10011000: undefined
+10011010: undefined
+10011011: undefined
+10011100: undefined
+10011101: undefined
+10011110: undefined
+10011111: undefined
+10100001: undefined
+10100010: undefined
+10100100: undefined
+10100110: undefined
+10100111: undefined
+10101000: undefined
+10101001: undefined
+10101011: undefined
+10101101: undefined
+10101110: undefined
+10110000: undefined
+10110010: undefined
+10110011: undefined
+10110100: undefined
+10110101: undefined
+10110110: undefined
+10110111: undefined
+10111001: undefined
+10111010: undefined
+10111100: undefined
+10111101: undefined
+10111110: undefined
+10111111: undefined
+11000001: undefined
+11000010: undefined
+11000100: undefined
+11000110: undefined
+11000111: undefined
+11001000: undefined
+11001001: undefined
+11001011: undefined
+11001101: undefined
+11001110: undefined
+11010000: undefined
+11010010: undefined
+11010011: undefined
+11010100: undefined
+11010101: undefined
+11010110: undefined
+11010111: undefined
+11011001: undefined
+11011010: undefined
+11011011: undefined
+11011100: undefined
+11011110: undefined
+11011111: undefined
+11100000: undefined
+11100001: undefined
+11100011: undefined
+11100101: undefined
+11100110: undefined
+11100111: undefined
+11101000: undefined
+11101001: undefined
+11101010: undefined
+11101011: undefined
+11101100: undefined
+11101101: undefined
+11101111: undefined
+11110001: undefined
+11110010: undefined
+11110100: undefined
+11110110: undefined
+11110111: undefined
+11111000: undefined
+11111001: undefined
+11111011: undefined
+11111101: undefined
+11111110: undefined
+(if a' then (if b' then 0 else c') else 0)
+(if a' then (if b' then 0 else c') else 1)
+(if a' then (if b' then 0 else c') else b')
+(if a' then (if b' then 0 else c') else b)
+(if a' then (if b' then 0 else c') else c')
+(if a' then (if b' then 0 else c') else c)
+(if a' then (if b' then 0 else c) else 0)
+(if a' then (if b' then 0 else c) else 1)
+(if a' then (if b' then 0 else c) else b')
+(if a' then (if b' then 0 else c) else b)
+(if a' then (if b' then 0 else c) else c')
+(if a' then (if b' then 0 else c) else c)
+(if a' then (if b' then 1 else c') else 0)
+(if a' then (if b' then 1 else c') else 1)
+(if a' then (if b' then 1 else c') else b')
+(if a' then (if b' then 1 else c') else b)
+(if a' then (if b' then 1 else c') else c')
+(if a' then (if b' then 1 else c') else c)
+(if a' then (if b' then 1 else c) else 0)
+(if a' then (if b' then 1 else c) else 1)
+(if a' then (if b' then 1 else c) else b')
+(if a' then (if b' then 1 else c) else b)
+(if a' then (if b' then 1 else c) else c')
+(if a' then (if b' then 1 else c) else c)
+(if a' then (if b' then c' else 0) else 0)
+(if a' then (if b' then c' else 0) else 1)
+(if a' then (if b' then c' else 0) else b')
+(if a' then (if b' then c' else 0) else b)
+(if a' then (if b' then c' else 0) else c')
+(if a' then (if b' then c' else 0) else c)
+(if a' then (if b' then c' else 1) else 0)
+(if a' then (if b' then c' else 1) else 1)
+(if a' then (if b' then c' else 1) else b')
+(if a' then (if b' then c' else 1) else b)
+(if a' then (if b' then c' else 1) else c')
+(if a' then (if b' then c' else 1) else c)
+(if a' then (if b' then c' else c) else 0)
+(if a' then (if b' then c' else c) else 1)
+(if a' then (if b' then c' else c) else b')
+(if a' then (if b' then c' else c) else b)
+(if a' then (if b' then c' else c) else c')
+(if a' then (if b' then c' else c) else c)
+(if a' then (if b' then c else 0) else 0)
+(if a' then (if b' then c else 0) else 1)
+(if a' then (if b' then c else 0) else b')
+(if a' then (if b' then c else 0) else b)
+(if a' then (if b' then c else 0) else c')
+(if a' then (if b' then c else 0) else c)
+(if a' then (if b' then c else 1) else 0)
+(if a' then (if b' then c else 1) else 1)
+(if a' then (if b' then c else 1) else b')
+(if a' then (if b' then c else 1) else b)
+(if a' then (if b' then c else 1) else c')
+(if a' then (if b' then c else 1) else c)
+(if a' then (if b' then c else c') else 0)
+(if a' then (if b' then c else c') else 1)
+(if a' then (if b' then c else c') else b')
+(if a' then (if b' then c else c') else b)
+(if a' then (if b' then c else c') else c')
+(if a' then (if b' then c else c') else c)
+(if a then (if b' then 0 else c') else 0)
+(if a then (if b' then 0 else c') else 1)
+(if a then (if b' then 0 else c') else b')
+(if a then (if b' then 0 else c') else b)
+(if a then (if b' then 0 else c') else c')
+(if a then (if b' then 0 else c') else c)
+(if a then (if b' then 0 else c) else 0)
+(if a then (if b' then 0 else c) else 1)
+(if a then (if b' then 0 else c) else b')
+(if a then (if b' then 0 else c) else b)
+(if a then (if b' then 0 else c) else c')
+(if a then (if b' then 0 else c) else c)
+(if a then (if b' then 1 else c') else 0)
+(if a then (if b' then 1 else c') else 1)
+(if a then (if b' then 1 else c') else b')
+(if a then (if b' then 1 else c') else b)
+(if a then (if b' then 1 else c') else c')
+(if a then (if b' then 1 else c') else c)
+(if a then (if b' then 1 else c) else 0)
+(if a then (if b' then 1 else c) else 1)
+(if a then (if b' then 1 else c) else b')
+(if a then (if b' then 1 else c) else b)
+(if a then (if b' then 1 else c) else c')
+(if a then (if b' then 1 else c) else c)
+(if a then (if b' then c' else 0) else 0)
+(if a then (if b' then c' else 0) else 1)
+(if a then (if b' then c' else 0) else b')
+(if a then (if b' then c' else 0) else b)
+(if a then (if b' then c' else 0) else c')
+(if a then (if b' then c' else 0) else c)
+(if a then (if b' then c' else 1) else 0)
+(if a then (if b' then c' else 1) else 1)
+(if a then (if b' then c' else 1) else b')
+(if a then (if b' then c' else 1) else b)
+(if a then (if b' then c' else 1) else c')
+(if a then (if b' then c' else 1) else c)
+(if a then (if b' then c' else c) else 0)
+(if a then (if b' then c' else c) else 1)
+(if a then (if b' then c' else c) else b')
+(if a then (if b' then c' else c) else b)
+(if a then (if b' then c' else c) else c')
+(if a then (if b' then c' else c) else c)
+(if a then (if b' then c else 0) else 0)
+(if a then (if b' then c else 0) else 1)
+(if a then (if b' then c else 0) else b')
+(if a then (if b' then c else 0) else b)
+(if a then (if b' then c else 0) else c')
+(if a then (if b' then c else 0) else c)
+(if a then (if b' then c else 1) else 0)
+(if a then (if b' then c else 1) else 1)
+(if a then (if b' then c else 1) else b')
+(if a then (if b' then c else 1) else b)
+(if a then (if b' then c else 1) else c')
+(if a then (if b' then c else 1) else c)
+(if a then (if b' then c else c') else 0)
+(if a then (if b' then c else c') else 1)
+(if a then (if b' then c else c') else b')
+(if a then (if b' then c else c') else b)
+(if a then (if b' then c else c') else c')
+(if a then (if b' then c else c') else c)
+(if b' then (if a' then 0 else c') else c)
+(if b' then (if a' then 0 else c) else c')
+(if b' then (if a' then 1 else c') else c)
+(if b' then (if a' then 1 else c) else c')
+(if b' then (if a' then c' else 0) else c)
+(if b' then (if a' then c' else 1) else c)
+(if b' then (if a' then c' else c) else 0)
+(if b' then (if a' then c' else c) else 1)
+(if b' then (if a' then c' else c) else a')
+(if b' then (if a' then c' else c) else a)
+(if b' then (if a' then c else 0) else c')
+(if b' then (if a' then c else 1) else c')
+(if b' then (if a' then c else c') else 0)
+(if b' then (if a' then c else c') else 1)
+(if b' then (if a' then c else c') else a')
+(if b' then (if a' then c else c') else a)
+(if b then (if a' then 0 else c') else c)
+(if b then (if a' then 0 else c) else c')
+(if b then (if a' then 1 else c') else c)
+(if b then (if a' then 1 else c) else c')
+(if b then (if a' then c' else 0) else c)
+(if b then (if a' then c' else 1) else c)
+(if b then (if a' then c' else c) else 0)
+(if b then (if a' then c' else c) else 1)
+(if b then (if a' then c' else c) else a')
+(if b then (if a' then c' else c) else a)
+(if b then (if a' then c else 0) else c')
+(if b then (if a' then c else 1) else c')
+(if b then (if a' then c else c') else 0)
+(if b then (if a' then c else c') else 1)
+(if b then (if a' then c else c') else a')
+(if b then (if a' then c else c') else a)
+(if c' then (if a' then b' else b) else 0)
+(if c' then (if a' then b' else b) else 1)
+(if c' then (if a' then b else b') else 0)
+(if c' then (if a' then b else b') else 1)
+(if c then (if a' then b' else b) else 0)
+(if c then (if a' then b' else b) else 1)
+(if c then (if a' then b else b') else 0)
+(if c then (if a' then b else b') else 1)
+still undefined before tree structure 100
+undefined for 3 vars:
+00010110: undefined
+00010111: undefined
+00011000: undefined
+00100100: undefined
+00101001: undefined
+00101011: undefined
+01000010: undefined
+01001001: undefined
+01001101: undefined
+01100001: undefined
+01101000: undefined
+01101001: undefined
+01101011: undefined
+01101101: undefined
+01110001: undefined
+01111001: undefined
+01111110: undefined
+10000001: undefined
+10000110: undefined
+10001110: undefined
+10010010: undefined
+10010100: undefined
+10010110: undefined
+10010111: undefined
+10011110: undefined
+10110010: undefined
+10110110: undefined
+10111101: undefined
+11010100: undefined
+11010110: undefined
+11011011: undefined
+11100111: undefined
+11101000: undefined
+11101001: undefined
+(if (if a' then b' else b) then a' else c')
+(if (if a' then b' else b) then a' else c)
+(if (if a' then b' else b) then a else c')
+(if (if a' then b' else b) then a else c)
+(if (if a' then b' else b) then c' else a')
+(if (if a' then b' else b) then c' else a)
+(if (if a' then b' else b) then c' else c)
+(if (if a' then b' else b) then c else a')
+(if (if a' then b' else b) then c else a)
+(if (if a' then b' else b) then c else c')
+Spent 4.471 seconds.
+calc for 3 inner nodes, 3 vars; 7 positions and 8 atom options make for 2097152 combinations times 2 tree structures to loop through:
+still undefined before tree structure 011
+undefined for 3 vars:
+00010110: undefined
+00011000: undefined
+00100100: undefined
+00101001: undefined
+01000010: undefined
+01001001: undefined
+01100001: undefined
+01101000: undefined
+01101011: undefined
+01101101: undefined
+01111001: undefined
+01111110: undefined
+10000001: undefined
+10000110: undefined
+10010010: undefined
+10010100: undefined
+10010111: undefined
+10011110: undefined
+10110110: undefined
+10111101: undefined
+11010110: undefined
+11011011: undefined
+11100111: undefined
+11101001: undefined
+(if a' then (if b' then 0 else c') else (if b' then c' else c))
+(if a' then (if b' then 0 else c') else (if b' then c else 0))
+(if a' then (if b' then 0 else c) else (if b' then c' else 0))
+(if a' then (if b' then 0 else c) else (if b' then c else c'))
+(if a' then (if b' then 1 else c') else (if b' then c' else c))
+(if a' then (if b' then 1 else c') else (if b' then c else 1))
+(if a' then (if b' then 1 else c) else (if b' then c' else 1))
+(if a' then (if b' then 1 else c) else (if b' then c else c'))
+(if a' then (if b' then c' else 0) else (if b' then 0 else c))
+(if a' then (if b' then c' else 0) else (if b' then c else c'))
+(if a' then (if b' then c' else 1) else (if b' then 1 else c))
+(if a' then (if b' then c' else 1) else (if b' then c else c'))
+(if a' then (if b' then c' else c) else (if b' then 0 else c'))
+(if a' then (if b' then c' else c) else (if b' then 1 else c'))
+(if a' then (if b' then c' else c) else (if b' then c else 0))
+(if a' then (if b' then c' else c) else (if b' then c else 1))
+(if a' then (if b' then c else 0) else (if b' then 0 else c'))
+(if a' then (if b' then c else 0) else (if b' then c' else c))
+(if a' then (if b' then c else 1) else (if b' then 1 else c'))
+(if a' then (if b' then c else 1) else (if b' then c' else c))
+(if a' then (if b' then c else c') else (if b' then 0 else c))
+(if a' then (if b' then c else c') else (if b' then 1 else c))
+(if a' then (if b' then c else c') else (if b' then c' else 0))
+(if a' then (if b' then c else c') else (if b' then c' else 1))
+still undefined before tree structure 101
+undefined for 3 vars:
+Spent 160.826 seconds.
+outcome for 3 vars:
+00000000: 0
+00000001: (if a then (if b' then 0 else c) else 0)
+00000010: (if a then (if b' then 0 else c') else 0)
+00000011: (if a' then 0 else b)
+00000100: (if a then (if b' then c else 0) else 0)
+00000101: (if a' then 0 else c)
+00000110: (if a then (if b' then c else c') else 0)
+00000111: (if a then (if b' then c else 1) else 0)
+00001000: (if a then (if b' then c' else 0) else 0)
+00001001: (if a then (if b' then c' else c) else 0)
+00001010: (if a' then 0 else c')
+00001011: (if a then (if b' then c' else 1) else 0)
+00001100: (if a' then 0 else b')
+00001101: (if a then (if b' then 1 else c) else 0)
+00001110: (if a then (if b' then 1 else c') else 0)
+00001111: a
+00010000: (if a' then (if b' then 0 else c) else 0)
+00010001: (if b' then 0 else c)
+00010010: (if b then (if a' then c else c') else 0)
+00010011: (if a' then (if b' then 0 else c) else b)
+00010100: (if c then (if a' then b else b') else 0)
+00010101: (if a' then (if b' then 0 else c) else c)
+00010110: (if a' then (if b' then 0 else c) else (if b' then c else c'))
+00010111: (if (if a' then b' else b) then a else c)
+00011000: (if a' then (if b' then 0 else c) else (if b' then c' else 0))
+00011001: (if b' then (if a' then 0 else c') else c)
+00011010: (if a' then (if b' then 0 else c) else c')
+00011011: (if c' then a else b)
+00011100: (if a' then (if b' then 0 else c) else b')
+00011101: (if b' then a else c)
+00011110: (if b then (if a' then c else c') else a)
+00011111: (if a' then (if b' then 0 else c) else 1)
+00100000: (if a' then (if b' then 0 else c') else 0)
+00100001: (if b then (if a' then c' else c) else 0)
+00100010: (if b' then 0 else c')
+00100011: (if a' then (if b' then 0 else c') else b)
+00100100: (if a' then (if b' then 0 else c') else (if b' then c else 0))
+00100101: (if a' then (if b' then 0 else c') else c)
+00100110: (if b' then (if a' then 0 else c) else c')
+00100111: (if c' then b else a)
+00101000: (if c' then (if a' then b else b') else 0)
+00101001: (if a' then (if b' then 0 else c') else (if b' then c' else c))
+00101010: (if a' then (if b' then 0 else c') else c')
+00101011: (if (if a' then b' else b) then a else c')
+00101100: (if a' then (if b' then 0 else c') else b')
+00101101: (if b then (if a' then c' else c) else a)
+00101110: (if b' then a else c')
+00101111: (if a' then (if b' then 0 else c') else 1)
+00110000: (if a' then b else 0)
+00110001: (if a then (if b' then 0 else c) else b)
+00110010: (if a then (if b' then 0 else c') else b)
+00110011: b
+00110100: (if a then (if b' then c else 0) else b)
+00110101: (if a' then b else c)
+00110110: (if a then (if b' then c else c') else b)
+00110111: (if a then (if b' then c else 1) else b)
+00111000: (if a then (if b' then c' else 0) else b)
+00111001: (if a then (if b' then c' else c) else b)
+00111010: (if a' then b else c')
+00111011: (if a then (if b' then c' else 1) else b)
+00111100: (if a' then b else b')
+00111101: (if a then (if b' then 1 else c) else b)
+00111110: (if a then (if b' then 1 else c') else b)
+00111111: (if a' then b else 1)
+01000000: (if a' then (if b' then c else 0) else 0)
+01000001: (if c then (if a' then b' else b) else 0)
+01000010: (if a' then (if b' then c else 0) else (if b' then 0 else c'))
+01000011: (if a' then (if b' then c else 0) else b)
+01000100: (if b' then c else 0)
+01000101: (if a' then (if b' then c else 0) else c)
+01000110: (if b then (if a' then 0 else c') else c)
+01000111: (if b' then c else a)
+01001000: (if b' then (if a' then c else c') else 0)
+01001001: (if a' then (if b' then c else 0) else (if b' then c' else c))
+01001010: (if a' then (if b' then c else 0) else c')
+01001011: (if b' then (if a' then c else c') else a)
+01001100: (if a' then (if b' then c else 0) else b')
+01001101: (if (if a' then b' else b) then c else a)
+01001110: (if c' then a else b')
+01001111: (if a' then (if b' then c else 0) else 1)
+01010000: (if a' then c else 0)
+01010001: (if a then (if b' then 0 else c) else c)
+01010010: (if a then (if b' then 0 else c') else c)
+01010011: (if a' then c else b)
+01010100: (if a then (if b' then c else 0) else c)
+01010101: c
+01010110: (if a then (if b' then c else c') else c)
+01010111: (if a then (if b' then c else 1) else c)
+01011000: (if a then (if b' then c' else 0) else c)
+01011001: (if a then (if b' then c' else c) else c)
+01011010: (if a' then c else c')
+01011011: (if a then (if b' then c' else 1) else c)
+01011100: (if a' then c else b')
+01011101: (if a then (if b' then 1 else c) else c)
+01011110: (if a then (if b' then 1 else c') else c)
+01011111: (if a' then c else 1)
+01100000: (if a' then (if b' then c else c') else 0)
+01100001: (if a' then (if b' then c else c') else (if b' then 0 else c))
+01100010: (if b' then (if a' then c else 0) else c')
+01100011: (if a' then (if b' then c else c') else b)
+01100100: (if b then (if a' then c' else 0) else c)
+01100101: (if a' then (if b' then c else c') else c)
+01100110: (if b' then c else c')
+01100111: (if b then (if a' then c' else 1) else c)
+01101000: (if a' then (if b' then c else c') else (if b' then c' else 0))
+01101001: (if (if a' then b' else b) then c else c')
+01101010: (if a' then (if b' then c else c') else c')
+01101011: (if a' then (if b' then c else c') else (if b' then c' else 1))
+01101100: (if a' then (if b' then c else c') else b')
+01101101: (if a' then (if b' then c else c') else (if b' then 1 else c))
+01101110: (if b' then (if a' then c else 1) else c')
+01101111: (if a' then (if b' then c else c') else 1)
+01110000: (if a' then (if b' then c else 1) else 0)
+01110001: (if (if a' then b' else b) then c else a')
+01110010: (if c' then b else a')
+01110011: (if a' then (if b' then c else 1) else b)
+01110100: (if b' then c else a')
+01110101: (if a' then (if b' then c else 1) else c)
+01110110: (if b then (if a' then 1 else c') else c)
+01110111: (if b' then c else 1)
+01111000: (if b' then (if a' then c else c') else a')
+01111001: (if a' then (if b' then c else 1) else (if b' then c' else c))
+01111010: (if a' then (if b' then c else 1) else c')
+01111011: (if b' then (if a' then c else c') else 1)
+01111100: (if a' then (if b' then c else 1) else b')
+01111101: (if c' then (if a' then b else b') else 1)
+01111110: (if a' then (if b' then c else 1) else (if b' then 1 else c'))
+01111111: (if a' then (if b' then c else 1) else 1)
+10000000: (if a' then (if b' then c' else 0) else 0)
+10000001: (if a' then (if b' then c' else 0) else (if b' then 0 else c))
+10000010: (if c' then (if a' then b' else b) else 0)
+10000011: (if a' then (if b' then c' else 0) else b)
+10000100: (if b' then (if a' then c' else c) else 0)
+10000101: (if a' then (if b' then c' else 0) else c)
+10000110: (if a' then (if b' then c' else 0) else (if b' then c else c'))
+10000111: (if b' then (if a' then c' else c) else a)
+10001000: (if b' then c' else 0)
+10001001: (if b then (if a' then 0 else c) else c')
+10001010: (if a' then (if b' then c' else 0) else c')
+10001011: (if b' then c' else a)
+10001100: (if a' then (if b' then c' else 0) else b')
+10001101: (if c' then b' else a)
+10001110: (if (if a' then b' else b) then c' else a)
+10001111: (if a' then (if b' then c' else 0) else 1)
+10010000: (if a' then (if b' then c' else c) else 0)
+10010001: (if b' then (if a' then c' else 0) else c)
+10010010: (if a' then (if b' then c' else c) else (if b' then 0 else c'))
+10010011: (if a' then (if b' then c' else c) else b)
+10010100: (if a' then (if b' then c' else c) else (if b' then c else 0))
+10010101: (if a' then (if b' then c' else c) else c)
+10010110: (if (if a' then b' else b) then c' else c)
+10010111: (if a' then (if b' then c' else c) else (if b' then c else 1))
+10011000: (if b then (if a' then c else 0) else c')
+10011001: (if b' then c' else c)
+10011010: (if a' then (if b' then c' else c) else c')
+10011011: (if b then (if a' then c else 1) else c')
+10011100: (if a' then (if b' then c' else c) else b')
+10011101: (if b' then (if a' then c' else 1) else c)
+10011110: (if a' then (if b' then c' else c) else (if b' then 1 else c'))
+10011111: (if a' then (if b' then c' else c) else 1)
+10100000: (if a' then c' else 0)
+10100001: (if a then (if b' then 0 else c) else c')
+10100010: (if a then (if b' then 0 else c') else c')
+10100011: (if a' then c' else b)
+10100100: (if a then (if b' then c else 0) else c')
+10100101: (if a' then c' else c)
+10100110: (if a then (if b' then c else c') else c')
+10100111: (if a then (if b' then c else 1) else c')
+10101000: (if a then (if b' then c' else 0) else c')
+10101001: (if a then (if b' then c' else c) else c')
+10101010: c'
+10101011: (if a then (if b' then c' else 1) else c')
+10101100: (if a' then c' else b')
+10101101: (if a then (if b' then 1 else c) else c')
+10101110: (if a then (if b' then 1 else c') else c')
+10101111: (if a' then c' else 1)
+10110000: (if a' then (if b' then c' else 1) else 0)
+10110001: (if c' then a' else b)
+10110010: (if (if a' then b' else b) then c' else a')
+10110011: (if a' then (if b' then c' else 1) else b)
+10110100: (if b' then (if a' then c' else c) else a')
+10110101: (if a' then (if b' then c' else 1) else c)
+10110110: (if a' then (if b' then c' else 1) else (if b' then c else c'))
+10110111: (if b' then (if a' then c' else c) else 1)
+10111000: (if b' then c' else a')
+10111001: (if b then (if a' then 1 else c) else c')
+10111010: (if a' then (if b' then c' else 1) else c')
+10111011: (if b' then c' else 1)
+10111100: (if a' then (if b' then c' else 1) else b')
+10111101: (if a' then (if b' then c' else 1) else (if b' then 1 else c))
+10111110: (if c then (if a' then b else b') else 1)
+10111111: (if a' then (if b' then c' else 1) else 1)
+11000000: (if a' then b' else 0)
+11000001: (if a then (if b' then 0 else c) else b')
+11000010: (if a then (if b' then 0 else c') else b')
+11000011: (if a' then b' else b)
+11000100: (if a then (if b' then c else 0) else b')
+11000101: (if a' then b' else c)
+11000110: (if a then (if b' then c else c') else b')
+11000111: (if a then (if b' then c else 1) else b')
+11001000: (if a then (if b' then c' else 0) else b')
+11001001: (if a then (if b' then c' else c) else b')
+11001010: (if a' then b' else c')
+11001011: (if a then (if b' then c' else 1) else b')
+11001100: b'
+11001101: (if a then (if b' then 1 else c) else b')
+11001110: (if a then (if b' then 1 else c') else b')
+11001111: (if a' then b' else 1)
+11010000: (if a' then (if b' then 1 else c) else 0)
+11010001: (if b' then a' else c)
+11010010: (if b then (if a' then c else c') else a')
+11010011: (if a' then (if b' then 1 else c) else b)
+11010100: (if (if a' then b' else b) then a' else c)
+11010101: (if a' then (if b' then 1 else c) else c)
+11010110: (if a' then (if b' then 1 else c) else (if b' then c else c'))
+11010111: (if c' then (if a' then b' else b) else 1)
+11011000: (if c' then b' else a')
+11011001: (if b' then (if a' then 1 else c') else c)
+11011010: (if a' then (if b' then 1 else c) else c')
+11011011: (if a' then (if b' then 1 else c) else (if b' then c' else 1))
+11011100: (if a' then (if b' then 1 else c) else b')
+11011101: (if b' then 1 else c)
+11011110: (if b then (if a' then c else c') else 1)
+11011111: (if a' then (if b' then 1 else c) else 1)
+11100000: (if a' then (if b' then 1 else c') else 0)
+11100001: (if b then (if a' then c' else c) else a')
+11100010: (if b' then a' else c')
+11100011: (if a' then (if b' then 1 else c') else b)
+11100100: (if c' then a' else b')
+11100101: (if a' then (if b' then 1 else c') else c)
+11100110: (if b' then (if a' then 1 else c) else c')
+11100111: (if a' then (if b' then 1 else c') else (if b' then c else 1))
+11101000: (if (if a' then b' else b) then a' else c')
+11101001: (if a' then (if b' then 1 else c') else (if b' then c' else c))
+11101010: (if a' then (if b' then 1 else c') else c')
+11101011: (if c then (if a' then b' else b) else 1)
+11101100: (if a' then (if b' then 1 else c') else b')
+11101101: (if b then (if a' then c' else c) else 1)
+11101110: (if b' then 1 else c')
+11101111: (if a' then (if b' then 1 else c') else 1)
+11110000: a'
+11110001: (if a then (if b' then 0 else c) else 1)
+11110010: (if a then (if b' then 0 else c') else 1)
+11110011: (if a' then 1 else b)
+11110100: (if a then (if b' then c else 0) else 1)
+11110101: (if a' then 1 else c)
+11110110: (if a then (if b' then c else c') else 1)
+11110111: (if a then (if b' then c else 1) else 1)
+11111000: (if a then (if b' then c' else 0) else 1)
+11111001: (if a then (if b' then c' else c) else 1)
+11111010: (if a' then 1 else c')
+11111011: (if a then (if b' then c' else 1) else 1)
+11111100: (if a' then 1 else b')
+11111101: (if a then (if b' then 1 else c) else 1)
+11111110: (if a then (if b' then 1 else c') else 1)
+11111111: 1
