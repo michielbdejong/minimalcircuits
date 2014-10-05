@@ -129,6 +129,21 @@ function printCondBehavior(params, numVars) {
   }
   return str;
 }
+
+function calcTwoNodes(numVars) {
+  var numOptions = numVars*2+2;
+  var numPositions = 5;
+  var numTrees = 2; // [[a,b,c], d, e] and [a, [b,c,d], e]  - [a, b, [c,d,e]] is rotatable to [a, [c,d,e], b]
+  var numCombinations = Math.pow(numOptions, numPositions);
+
+  for (var i=0; i<numCombinations; i++) {
+    if (!optimal[printCondBehavior(theseParams, numVars)]) {
+      optimal[printCondBehavior(theseParams, numVars)] = printExpression(theseParams);
+    }
+    nextParam(numOptions, numPositions);
+  }
+}
+
 function calcOneNode(numVars) {
   var numOptions = numVars*2+2;
   var numPositions = 3;
@@ -164,5 +179,6 @@ for (var numVars = 1; numVars <= 3; numVars++) {
   genOptions(numVars);
   calcZeroNodes(numVars);
   calcOneNode(numVars);
+  calcTwoNodes(numVars);
   printOutcome(numVars, optimal);
 }
