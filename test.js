@@ -1,7 +1,5 @@
 var numVar = 1;
 var expressions = {};
-var iteration = 0;
-var theseParams = [0, 0, 0];
 var option;
 var letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -24,9 +22,8 @@ function zeroes(str, num) {
   }
   return str;
 }
-function nextParam(numOptions, numPositions) {
-  iteration++;
-  theseParams = zeroes(iteration.toString(numOptions), numPositions).split('').map(function(str) {
+function calcParams(iteration, numOptions, numPositions) {
+  return zeroes(iteration.toString(numOptions), numPositions).split('').map(function(str) {
     return parseInt(str);
   });
 }
@@ -135,12 +132,12 @@ function calcTwoNodes(numVars) {
   var numPositions = 5;
   var numTrees = 2; // [[a,b,c], d, e] and [a, [b,c,d], e]  - [a, b, [c,d,e]] is rotatable to [a, [c,d,e], b]
   var numCombinations = Math.pow(numOptions, numPositions);
-
-  for (var i=0; i<numCombinations; i++) {
+  var i, theseParams;
+  for (i=0; i<numCombinations; i++) {
+    theseParams = calcParams(i, numOptions, numPositions);
     if (!optimal[printCondBehavior(theseParams, numVars)]) {
       optimal[printCondBehavior(theseParams, numVars)] = printExpression(theseParams);
     }
-    nextParam(numOptions, numPositions);
   }
 }
 
@@ -148,12 +145,12 @@ function calcOneNode(numVars) {
   var numOptions = numVars*2+2;
   var numPositions = 3;
   var numCombinations = Math.pow(numOptions, numPositions);
-
-  for (var i=0; i<numCombinations; i++) {
+  var i, theseParams;
+  for (i=0; i<numCombinations; i++) {
+    theseParams = calcParams(i, numOptions, numPositions);
     if (!optimal[printCondBehavior(theseParams, numVars)]) {
       optimal[printCondBehavior(theseParams, numVars)] = printExpression(theseParams);
     }
-    nextParam(numOptions, numPositions);
   }
 }
 
