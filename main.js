@@ -1,3 +1,9 @@
+var print = require('./print'),
+  printOutcome = print.printOutcome,
+  makeAtom = print.makeAtom,
+  zeroes = print.zeroes,
+  printExpression = print.printExpression;
+
 //basic structures:
 //- expression (string '0', '1', 'x\'', 'x' or array [expression, expression, expression])
 //- valuation (array numVars booleans)
@@ -9,28 +15,6 @@ function assert(a, b) {
     die();
   }
 }
-
-//generate the n-th atom option:
-function makeAtom(option) {
-  var atoms = {
-    0: '0', 1: '1',
-    2: 'a\'', 3: 'a',
-    4: 'b\'', 5: 'b',
-    6: 'c\'', 7: 'c',
-    8: 'd\'', 9: 'd'
-  };
-  return atoms[option];
-}
-
-//adds zeroes at the front of a string:
-function zeroes(str, num) {
-  while (str.length < num) {
-    str = '0'+str;
-  }
-  return str;
-}
-assert(zeroes('abc', 0), 'abc');
-assert(zeroes('abc', 10), '0000000abc');
 
 function fillSubTree(treeStructure, positions, startPosition, subTrees) {
   var tree = [];
@@ -88,18 +72,6 @@ function calcNthExpression(iteration, numInnerNodes, treeStructure, numVars) {
     return makeAtom(parseInt(str));
   });
   return fillTree(treeStructure, positions);
-}
-
-//print an expression tree in a human-readable string format:
-function printExpression(expression) {
-  if (Array.isArray(expression)) {
-    return '(if '+printExpression(expression[0])
-      +' then '+printExpression(expression[1])
-      +' else '+printExpression(expression[2])
-      +')';
-  } else {//atoms are readily human-readable:
-    return expression;
-  }
 }
 
 //calculates whether an atomic expression is true or false, given a valuation (array of booleans) vals:
@@ -199,7 +171,7 @@ function calcFor(numInnerNodes, numVars, optimal) {
       for (j=0; j<numCombinations; j++) {
         var expression = calcNthExpression(j, numInnerNodes, treeStructures[i], numVars);
         if (!optimal[printExpressionBehavior(expression, numVars)]) {
-          optimal[printExpressionBehavior(expression, numVars)] = printExpression(expression);
+          optimal[printExpressionBehavior(expression, numVars)] = expression;
           console.log(printExpression(expression));
         }
       }
@@ -209,33 +181,61 @@ function calcFor(numInnerNodes, numVars, optimal) {
   return optimal;
 }
 
-//print out the results:
-function printOutcome(numVars, optimal, undefinedOnly) {
-  var thisStr, somethingStillUndefined = false;
-  console.log(
-      (undefinedOnly?'undefined':'outcome')
-      + ' for ' + numVars + ' vars:');
-  for (var i=0; i<Math.pow(2, Math.pow(2, numVars)); i++) {
-    thisStr = zeroes(i.toString(2), Math.pow(2, numVars));
-    if (typeof optimal[thisStr] === 'undefined') {
-      somethingStillUndefined = true;
+function doubleUp(previousResults) {
+  var i, j, str, optimal = {};
+  for (i in previousResults) {
+    str = '';
+    for (j=0; j<i.length; j++) {
+      str += i[j]+i[j];
     }
-    if (!undefinedOnly || typeof optimal[thisStr] === 'undefined') {
-      console.log(thisStr+': '+optimal[thisStr]);
+    optimal[str] = previousResults[i];
+  }
+  return optimal;
+}
+function expressionSize(expression) {
+  if (Array.isArray(expression)) {
+    return expressionSize(expression[0])
+        + expressionSize(expression[0])
+        + expressionSize(expression[0])
+        + 1;
+  } else {
+    return 0;
+  }
+}
+function branchOnVar(branchVar, previousResults, optimal, maxSize) {
+  var i, j, k, str;
+
+  for (i in previousResults) {
+    for (j in previousResults) {
+      str = '';
+      for (k=0; k<i.length; k++) {
+        str += i[k]+j[k];
+      }
+      
+      if ((!optimal[str]) && expressionSize(previousResults[i])+expressionSize(previousResults[k])<maxSize) {
+        optimal[str] = [['a', 'b', 'c', 'd', 'e', 'f', 'g'][branchVar], previousResults[i], previousResults[j]];
+      }
     }
   }
-  return somethingStillUndefined;
+  return optimal;
 }
 
-function runForVars(numVars) {
-  var optimal = {}, numInnerNodes;
+function runForVars(numVars, previousResults) {
+  var optimal, numInnerNodes, somethingStillUndefined = true;
+  optimal = doubleUp(previousResults);
+  console.log('undefined after doubleUp:');
+  somethingStillUndefined = printOutcome(numVars, optimal, true);
+  
   for (numInnerNodes = 0; numInnerNodes <= numVars; numInnerNodes++) {
+    optimal = branchOnVar(numVars-1, previousResults, optimal, numInnerNodes);
     optimal = calcFor(numInnerNodes, numVars, optimal);
   }
   printOutcome(numVars, optimal);
+  return optimal;
 }
 
 //...
+var previousResults = {};
 for (var numVars = 1; numVars <= 3; numVars++) {
-  runForVars(numVars);
+  previousResults = runForVars(numVars, previousResults);
 }
