@@ -13,6 +13,7 @@ for all behaviors in `n` Boolean inputs and one Boolean output, using only:
 * the literals x and x' (for x an input variable a, b, c, etc., and the ' denoting negation)
 * the tertiary `if (x) then (y) else (z)` operator, defined as follows (`0=false, 1=true`):
 
+````
 x y z `if (x) then (y) else (z)`
 0 0 0           0
 0 0 1           1
@@ -22,6 +23,7 @@ x y z `if (x) then (y) else (z)`
 1 0 1           0
 1 1 0           1
 1 1 1           1
+````
 
 I used this script to investigate if there would be a behavior for which it is suboptimal to use a
 literal in for `x` in the root operator. There is, namely for instance all expressions structurally
