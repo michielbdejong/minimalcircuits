@@ -80,59 +80,8 @@ function expressionSize(expression) {
     return 0;
   }
 }
- 
-function branchOnVar(previousResults, results, varNum, numVars, maxNodes) {
-  var i, j, thisExpression, thisEvaluation;
-  for (i in previousResults) {
-    for (j in previousResults) {
-      if ((i != j) && (expressionSize(previousResults[i]) + expressionSize(previousResults[j]) < maxNodes)) {
-        thisExpression = [
-          varNum + 2,
-          insertVar(varNum, previousResults[i]),
-          insertVar(varNum, previousResults[j])
-        ];
-        thisEvaluation = evaluate(thisExpression, numVars);
-        if (!results[thisEvaluation]) {
-          results[thisEvaluation] = thisExpression;
-        }
-      }
-    }
-  }
-  return results;
-}
-function addAtoms(numVars) {
-  var results = {};
-  for (i=1; i<numVars+2; i++) {
-    results[evaluate(i, numVars)] = i;
-    results[evaluate(-i, numVars)] = -i;
-  }
-  return results;
-}
-function done(results, numVar, maxNodes) {
-  var i, val;
-  for (i=0; i<Math.pow(2, Math.pow(2, numVar)); i++) {
-    val = makeBehavior(i, numVar);
-    if (typeof results[val] === 'undefined') {
-      console.log('not done', val, maxNodes);
-      return false;
-    }
-  }
-  return true;
-}
-function calcFor(numVars, previousResults) {
-  var results = addAtoms(numVars);
-  var maxNodes=1;
-  while (!done(results, numVars, maxNodes)) {
-    for (var branchVar=0; branchVar<numVars; branchVar++) {
-      results = branchOnVar(previousResults, results, branchVar, numVars, maxNodes);
-    }
-    maxNodes++;
-  }
-  return results;
-}
 
 function expressionToHuman(expression) {
-  
   if (Array.isArray(expression)) {
     return 'if ('
         + expressionToHuman(expression[0]) + ') then ('
@@ -161,19 +110,47 @@ function expressionToHuman(expression) {
     }[expression.toString()];
   }
 }
+
 //1 var, 2 valuations, 4 behaviors
 //2 vars, 4 valuations, 16 behaviors
 //etc
-function printResults(results, numVar) {
+function printResult(result, numVar) {
   var i, val;
   for (i=0; i<Math.pow(2, Math.pow(2, numVar)); i++) {
     val = makeBehavior(i, numVar);
-    console.log(val + ': '+expressionToHuman(results[val]));
+    console.log(val + ': '+expressionToHuman(result[val]));
   }
+  return result;
 }
-var results = {};
-results = calcFor(0, results); printResults(results, 0);
-results = calcFor(1, results); printResults(results, 1);
-results = calcFor(2, results); printResults(results, 2);
-results = calcFor(3, results); printResults(results, 3);
-results = calcFor(4, results); printResults(results, 4);
+
+function mergeBehaviors(varNum, numVar, leftBehavior, rightBehavior) {
+// varNum = 0 -> LLLLLLLLRRRRRRRR chunkSize = Math.pow(2, 4-0-1) = 8
+// varNum = 1 -> LLLLRRRRLLLLRRRR chunkSize = Math.pow(2, 4-1-1) = 4
+// varNum = 2 -> LLRRLLRRLLRRLLRR chunkSize = Math.pow(2, 4-2-1) = 2
+// varNum = 3 -> LRLRLRLRLRLRLRLR chunkSize = Math.pow(2, 4-3-1) = 1
+// numVar = 4
+  var chunkSize = Math.pow(2, numVar-varNum-1), merge = [],
+    leftVals = leftBehavior.split(''),
+    rightVals = rightBehavior.split('');
+  while (leftVals.length) {
+    //console.log('varNum, numVar, chunkSize, leftBehavior, rightBehavior, merge',
+    //    JSON.stringify([varNum, numVar, chunkSize, leftVals, rightVals, merge]));
+    merge = merge.concat(leftVals.splice(0, chunkSize));
+    merge = merge.concat(rightVals.splice(0, chunkSize));
+  }
+  return merge.join('');
+}
+
+module.exports = {
+  makeAtom         : makeAtom,
+  makeExpression   : makeExpression,
+  makeValuation    : makeValuation,
+  makeBehavior     : makeBehavior,
+  evaluateFor      : evaluateFor,
+  evaluate         : evaluate,
+  insertVar        : insertVar,
+  expressionSize   : expressionSize,
+  expressionToHuman: expressionToHuman,
+  printResult      : printResult,
+  mergeBehaviors   : mergeBehaviors
+};
