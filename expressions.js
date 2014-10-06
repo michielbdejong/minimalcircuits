@@ -116,6 +116,7 @@ function expressionToHuman(expression) {
 //etc
 function printResult(result, numVar) {
   var i, val;
+  console.log('Optimal Boolean expressions using only atoms and the if-then-else operator, in ' + numVar + ' variables:');
   for (i=0; i<Math.pow(2, Math.pow(2, numVar)); i++) {
     val = makeBehavior(i, numVar);
     console.log(val + ': '+expressionToHuman(result[val]));
