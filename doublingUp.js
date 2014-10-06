@@ -13,7 +13,7 @@ var expressions = require('./expressions');
 var ALLOW_VARS_AS_ATOMS = true;
 
 function getBootstrap(numVars, previousResult) {
-  var result = {}, leftBehavior, rightBehavior, varNum;
+  var result = {}, leftBehavior, rightBehavior, thisBehavior, subBehaviors, varNum, i;
   function propose(behavior, expression) {
     if (typeof result[behavior] === 'undefined'
         || expressions.expressionSize(result[behavior]) > expressions.expressionSize(expression)) {
@@ -28,17 +28,20 @@ function getBootstrap(numVars, previousResult) {
 
   for (varNum = 0; varNum < numVars; varNum++) {
     for (leftBehavior in previousResult) {
-      for (rightBehavior in previousResult) {
-        if (leftBehavior === rightBehavior) {
-          propose(expressions.mergeBehaviors(varNum, numVars, leftBehavior, rightBehavior),
-              expressions.insertVar(varNum, previousResult[leftBehavior]));
-        } else {
-          propose(expressions.mergeBehaviors(varNum, numVars, leftBehavior, rightBehavior),
-              [expressions.makeAtom(true, 0),
-               expressions.insertVar(varNum, previousResult[rightBehavior]),
-               expressions.insertVar(varNum, previousResult[leftBehavior])
-              ]);
-        }
+      propose(expressions.mergeBehaviors(varNum, numVars, leftBehavior, leftBehavior),
+          expressions.insertVar(varNum, previousResult[leftBehavior]));
+    }
+  }
+  for (i=0; i < Math.pow(2, Math.pow(2, numVars)); i++) {
+    thisBehavior = expressions.makeBehavior(i, numVars);
+    if (typeof result[thisBehavior] === 'undefined') {
+      for (varNum = 0; varNum < numVars; varNum++) {
+        subBehaviors = expressions.splitBehavior(varNum, numVars, thisBehavior);
+        propose(expressions.mergeBehaviors(varNum, numVars, subBehaviors.left, subBehaviors.right),
+            [expressions.makeAtom(true, varNum),
+             expressions.insertVar(varNum, previousResult[subBehaviors.right]),
+             expressions.insertVar(varNum, previousResult[subBehaviors.left])
+            ]);
       }
     }
   }

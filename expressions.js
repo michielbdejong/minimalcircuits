@@ -141,6 +141,19 @@ function mergeBehaviors(varNum, numVar, leftBehavior, rightBehavior) {
   return merge.join('');
 }
 
+function splitBehavior(varNum, numVar, bigBehavior) {
+  var chunkSize = Math.pow(2, numVar-varNum-1),
+    leftVals = [], rightVals = [],
+    bigVals = bigBehavior.split('');
+  while (bigVals.length) {
+    leftVals = leftVals.concat(bigVals.splice(0, chunkSize));
+    rightVals = rightVals.concat(bigVals.splice(0, chunkSize));
+  }
+  return {
+    left: leftVals.join(''),
+    right: rightVals.join('')
+  };
+}
 module.exports = {
   makeAtom         : makeAtom,
   makeExpression   : makeExpression,
@@ -152,5 +165,6 @@ module.exports = {
   expressionSize   : expressionSize,
   expressionToHuman: expressionToHuman,
   printResult      : printResult,
-  mergeBehaviors   : mergeBehaviors
+  mergeBehaviors   : mergeBehaviors,
+  splitBehavior    : splitBehavior
 };
