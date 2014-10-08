@@ -10,7 +10,8 @@ var expressions = require('./expressions');
 // expressionToHuman(expression) {
 // printResult(result, numVar) {
 
-var ALLOW_VARS_AS_ATOMS = true;
+ var ALLOW_VARS_AS_ATOMS = false;
+ //var ALLOW_VARS_AS_ATOMS = true;
 
 function getBootstrap(numVars, previousResult) {
   var result = {}, leftBehavior, rightBehavior, thisBehavior, subBehaviors, varNum, i;
@@ -56,5 +57,5 @@ previousResult[expressions.evaluate(expressions.makeAtom(true), 0)] = expression
 expressions.printResult(previousResult, 0);
 previousResult = expressions.printResult(getBootstrap(1, previousResult), 1);
 previousResult = expressions.printResult(getBootstrap(2, previousResult), 2);
-//previousResult = expressions.printResult(getBootstrap(3, previousResult), 3);
-//previousResult = expressions.printResult(getBootstrap(4, previousResult), 4);
+previousResult = expressions.printResult(getBootstrap(3, previousResult), 3);
+previousResult = expressions.printResult(getBootstrap(4, previousResult), 4);

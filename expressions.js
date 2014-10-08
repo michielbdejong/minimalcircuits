@@ -1,3 +1,4 @@
+var STATS_ONLY = true;
 //datastructures:
 //atom: integer sign * (varNum+2) or 1/0 for true/false
 //expression: array of 3 expressions, or atom
@@ -115,11 +116,27 @@ function expressionToHuman(expression) {
 //2 vars, 4 valuations, 16 behaviors
 //etc
 function printResult(result, numVar) {
-  var i, val;
-  console.log('Optimal Boolean expressions using only atoms and the if-then-else operator, in ' + numVar + ' variables:');
+  var i, val, sizes = {};
+  if (STATS_ONLY) {
+    console.log('Minimal sizes of expressions in ' + numVar + ' vars:');
+  } else {
+    console.log('Optimal Boolean expressions using only atoms and the if-then-else operator, in ' + numVar + ' variables:');
+  }
   for (i=0; i<Math.pow(2, Math.pow(2, numVar)); i++) {
     val = makeBehavior(i, numVar);
-    console.log(val + ': '+expressionToHuman(result[val]));
+    if (STATS_ONLY) {
+      if (!sizes[expressionSize(result[val])]) {
+        sizes[expressionSize(result[val])] = [];
+      }
+      sizes[expressionSize(result[val])].push(val);
+    } else {
+      console.log(val + ': '+expressionToHuman(result[val]));
+    }
+  }
+  if (STATS_ONLY) {
+    for (i in sizes) {
+      console.log('' + i + '(' + sizes[i].length + '): '+ JSON.stringify(sizes[i]));
+    }
   }
   return result;
 }
