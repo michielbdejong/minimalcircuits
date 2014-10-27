@@ -118,7 +118,7 @@ function expressionToHuman(expression) {
 function printResult(result, numVar, onlyThoseStartingWithZero) {
   var i, val, sizes = {};
   if (STATS_ONLY) {
-    console.log('Minimal sizes of expressions in ' + numVar + ' vars:');
+    console.log('Minimal sizes of expressions in ' + numVar + ' vars' + (onlyThoseStartingWithZero ? ' that start with "0"' : '') + ':');
   } else {
     console.log('Optimal Boolean expressions using only atoms and the if-then-else operator, in ' + numVar + ' variables:');
   }
