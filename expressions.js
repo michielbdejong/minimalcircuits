@@ -115,14 +115,14 @@ function expressionToHuman(expression) {
 //1 var, 2 valuations, 4 behaviors
 //2 vars, 4 valuations, 16 behaviors
 //etc
-function printResult(result, numVar) {
+function printResult(result, numVar, onlyThoseStartingWithZero) {
   var i, val, sizes = {};
   if (STATS_ONLY) {
     console.log('Minimal sizes of expressions in ' + numVar + ' vars:');
   } else {
     console.log('Optimal Boolean expressions using only atoms and the if-then-else operator, in ' + numVar + ' variables:');
   }
-  for (i=0; i<Math.pow(2, Math.pow(2, numVar)); i++) {
+  for (i=0; i<Math.pow(2, Math.pow(2, numVar) - (onlyThoseStartingWithZero ? 1 : 0)); i++) {
     val = makeBehavior(i, numVar);
     if (STATS_ONLY) {
       if (!sizes[expressionSize(result[val])]) {

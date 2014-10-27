@@ -54,8 +54,7 @@ var previousResult = {};
 previousResult[expressions.evaluate(expressions.makeAtom(false), 0)] = expressions.makeAtom(false);
 previousResult[expressions.evaluate(expressions.makeAtom(true), 0)] = expressions.makeAtom(true);
 
-expressions.printResult(previousResult, 0);
-previousResult = expressions.printResult(getBootstrap(1, previousResult), 1);
-previousResult = expressions.printResult(getBootstrap(2, previousResult), 2);
-previousResult = expressions.printResult(getBootstrap(3, previousResult), 3);
-previousResult = expressions.printResult(getBootstrap(4, previousResult), 4);
+expressions.printResult(previousResult, 0, true);
+previousResult = expressions.printResult(getBootstrap(1, previousResult), 1, true);
+previousResult = expressions.printResult(getBootstrap(2, previousResult), 2, true);
+previousResult = expressions.printResult(getBootstrap(3, previousResult), 3, true);
