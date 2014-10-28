@@ -1,4 +1,5 @@
-var STATS_ONLY = true;
+//var STATS_ONLY = true;
+var STATS_ONLY = false;
 //datastructures:
 //atom: integer sign * (varNum+2) or 1/0 for true/false
 //expression: array of 3 expressions, or atom

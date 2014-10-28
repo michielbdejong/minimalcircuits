@@ -107,6 +107,9 @@ a'      d' 0   0   0   0c  0   0b  a'c'd'
       c' d 0   0   0   0d  1   1*
         d' 1   0   1   0*  1   0*
 
+
+see also http://www.mathcs.duq.edu/~jackson/Research/LiviaOverand/3variable.pdf for 14 cases
+
 flips from xor, type, nodes, inverse in one var:
 00 1 const 0 11
 01 0 xor   1 10
@@ -165,21 +168,216 @@ in two vars, that means 1 xor, 1 const, 4 straight(2)s (2^2), 2 straight(1)s (on
 in three vars, you would have 1 xor, 1 const, 3 straight(1)s, 3x4 straight(2)s, 8 straight(3)s, and then another 2^7-25=103 other types for which i have to do the botany now.
 
 Minimal sizes of expressions in 0 vars that start with "0":
-0(1): ["0"]
+0(1): ["0"] const
 Minimal sizes of expressions in 1 vars that start with "0":
-0(1): ["00"]
-1(1): ["01"]
+0(1): ["00"] const
+1(1): ["01"] xor
 Minimal sizes of expressions in 2 vars that start with "0":
-0(1): ["0000"]
-1(2): ["0011","0101"]
-2(4): ["0001","0010","0100","0111"]
-3(1): ["0110"]
+0(1): ["0000"] const
+1(2): ["0011","0101"] straight(1)
+2(4): ["0001","0010","0100","0111"] straight(2)
+3(1): ["0110"] xor
 Minimal sizes of expressions in 3 vars that start with "0":
-0(1): ["00000000"]
-1(3): ["00001111","00110011","01010101"]
-2(12): ["00000011","00000101","00001010","00001100","00010001","00100010","00110000","00111111","01000100","01010000","01011111","01110111"]
-3(47): ["00000001","00000010","00000100","00000111","00001000","00001011","00001101","00001110","00010000","00010011","00010101","00011011","00011101","00011111","00100000","00100011","00100111","00101010","00101110","00101111","00110001","00110010","00110101","00110111","00111010","00111011","00111100","01000000","01000101","01000111","01001100","01001110","01001111","01010001","01010011","01010100","01010111","01011010","01011100","01011101","01100110","01110000","01110010","01110011","01110100","01110101","01111111"]
+0(1): ["00000000"] const
+1(3): ["00001111","00110011","01010101"] straight(1)
+2(12): ["00000011","00000101","00001010","00001100","00010001","00100010","00110000","00111111","01000100","01010000","01011111","01110111"] straight(2)
+3(47): [
+"00000001","00000010","00000100","00001000","00010000","00100000","01000000","01111111", straight(3)
+
+"00000111","00001011","00001101","00001110", const(a')+straight(b,c)
+"01110000","00011111","00101111","01001111", const(a)+straight(b,c)
+
+"00010011", "00100011", "00110001", "00110010", const(b')+straight(a,c)
+"01001100", "00110111", "00111011", "01110011", const(b)+straight(a,c)
+
+"00010101", "01000101", "01010001", "01010100", const(c')+straight(a,b)
+"00101010", "01010111", "01110101", "01011101", const(c)+straight(a,b)
+
+
+"00011011",
+
+
+a 1011
+  0001
+b 0111
+  0010
+c 0011
+  0101
+
+"00011101", "00100111", "00101110", "00110101", 
+"00111010", "00111100", "01000111", "01010011", 
+"01011010", "01011100", "01100110", "01110010", "01110100", 
+
+"01001110", abc
+  c0
+ b 1
+  1
+a
+  0
+ b
+  c1
+   0
+
+a 1110
+  0100
+
+b 0010
+  0111
+
+c 1010
+  0011
+
+   c0   a
+[ b 1 ] 
+   c1   
+    0
+
+
+]
 4(36): ["00000110","00001001","00010010","00010100","00011001","00011010","00011100","00100001","00100101","00100110","00101000","00101100","00110100","00111000","00111101","00111110","01000001","01000011","01000110","01001000","01001010","01010010","01011000","01011011","01011110","01100000","01100010","01100100","01100111","01101110","01101111","01110110","01111010","01111011","01111100","01111101"]
 5(20): ["00010111","00011000","00011110","00100100","00101011","00101101","00110110","00111001","01000010","01001011","01001101","01010110","01011001","01100011","01100101","01101010","01101100","01110001","01111000","01111110"]
-6(8): ["00010110","00101001","01001001","01100001","01101000","01101011","01101101","01111001"]
-7(1): ["01101001"]
+6(8): ["00010110","00101001","01001001","01100001","01101000","01101011","01101101","01111001"] flip(1)
+7(1): ["01101001"] xor
+Optimal Boolean expressions using only atoms and the if-then-else operator, in 0 variables:
+0: false
+Optimal Boolean expressions using only atoms and the if-then-else operator, in 1 variables:
+00: false
+01: if (a) then (true) else (false)
+Optimal Boolean expressions using only atoms and the if-then-else operator, in 2 variables:
+0000: false
+0001: if (a) then (if (b) then (true) else (false)) else (false)
+0010: if (a) then (if (b) then (false) else (true)) else (false)
+0011: if (a) then (true) else (false)
+0100: if (a) then (false) else (if (b) then (true) else (false))
+0101: if (b) then (true) else (false)
+0110: if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (false))
+0111: if (a) then (true) else (if (b) then (true) else (false))
+Optimal Boolean expressions using only atoms and the if-then-else operator, in 3 variables:
+00000000: false
+00000001: if (a) then (if (b) then (if (c) then (true) else (false)) else (false)) else (false)
+00000010: if (a) then (if (b) then (if (c) then (false) else (true)) else (false)) else (false)
+00000011: if (a) then (if (b) then (true) else (false)) else (false)
+00000100: if (a) then (if (b) then (false) else (if (c) then (true) else (false))) else (false)
+00000101: if (a) then (if (c) then (true) else (false)) else (false)
+00000110: if (a) then (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))) else (false)
+00000111: if (a) then (if (b) then (true) else (if (c) then (true) else (false))) else (false)
+00001000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (false)
+00001001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (false)
+00001010: if (a) then (if (c) then (false) else (true)) else (false)
+00001011: if (a) then (if (b) then (true) else (if (c) then (false) else (true))) else (false)
+00001100: if (a) then (if (b) then (false) else (true)) else (false)
+00001101: if (a) then (if (b) then (if (c) then (true) else (false)) else (true)) else (false)
+00001110: if (a) then (if (b) then (if (c) then (false) else (true)) else (true)) else (false)
+00001111: if (a) then (true) else (false)
+00010000: if (a) then (false) else (if (b) then (if (c) then (true) else (false)) else (false))
+00010001: if (b) then (if (c) then (true) else (false)) else (false)
+00010010: if (b) then (if (a) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))) else (false)
+00010011: if (b) then (if (a) then (true) else (if (c) then (true) else (false))) else (false)
+00010100: if (c) then (if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (false))) else (false)
+00010101: if (c) then (if (a) then (true) else (if (b) then (true) else (false))) else (false)
+00010110: if (a) then (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))) else (if (b) then (if (c) then (true) else (false)) else (false))
+00010111: if (a) then (if (b) then (true) else (if (c) then (true) else (false))) else (if (b) then (if (c) then (true) else (false)) else (false))
+00011000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (true) else (false)) else (false))
+00011001: if (b) then (if (c) then (true) else (false)) else (if (a) then (if (c) then (false) else (true)) else (false))
+00011010: if (a) then (if (c) then (false) else (true)) else (if (b) then (if (c) then (true) else (false)) else (false))
+00011011: if (c) then (if (b) then (true) else (false)) else (if (a) then (true) else (false))
+00011100: if (a) then (if (b) then (false) else (true)) else (if (b) then (if (c) then (true) else (false)) else (false))
+00011101: if (b) then (if (c) then (true) else (false)) else (if (a) then (true) else (false))
+00011110: if (a) then (if (b) then (if (c) then (false) else (true)) else (true)) else (if (b) then (if (c) then (true) else (false)) else (false))
+00011111: if (a) then (true) else (if (b) then (if (c) then (true) else (false)) else (false))
+00100000: if (a) then (false) else (if (b) then (if (c) then (false) else (true)) else (false))
+00100001: if (b) then (if (a) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (false)
+00100010: if (b) then (if (c) then (false) else (true)) else (false)
+00100011: if (b) then (if (a) then (true) else (if (c) then (false) else (true))) else (false)
+00100100: if (a) then (if (b) then (false) else (if (c) then (true) else (false))) else (if (b) then (if (c) then (false) else (true)) else (false))
+00100101: if (a) then (if (c) then (true) else (false)) else (if (b) then (if (c) then (false) else (true)) else (false))
+00100110: if (b) then (if (c) then (false) else (true)) else (if (a) then (if (c) then (true) else (false)) else (false))
+00100111: if (c) then (if (a) then (true) else (false)) else (if (b) then (true) else (false))
+00101000: if (c) then (false) else (if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (false)))
+00101001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (false) else (true)) else (false))
+00101010: if (c) then (false) else (if (a) then (true) else (if (b) then (true) else (false)))
+00101011: if (a) then (if (b) then (true) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (false) else (true)) else (false))
+00101100: if (a) then (if (b) then (false) else (true)) else (if (b) then (if (c) then (false) else (true)) else (false))
+00101101: if (a) then (if (b) then (if (c) then (true) else (false)) else (true)) else (if (b) then (if (c) then (false) else (true)) else (false))
+00101110: if (b) then (if (c) then (false) else (true)) else (if (a) then (true) else (false))
+00101111: if (a) then (true) else (if (b) then (if (c) then (false) else (true)) else (false))
+00110000: if (a) then (false) else (if (b) then (true) else (false))
+00110001: if (b) then (if (a) then (if (c) then (true) else (false)) else (true)) else (false)
+00110010: if (b) then (if (a) then (if (c) then (false) else (true)) else (true)) else (false)
+00110011: if (b) then (true) else (false)
+00110100: if (a) then (if (b) then (false) else (if (c) then (true) else (false))) else (if (b) then (true) else (false))
+00110101: if (a) then (if (c) then (true) else (false)) else (if (b) then (true) else (false))
+00110110: if (a) then (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))) else (if (b) then (true) else (false))
+00110111: if (b) then (true) else (if (a) then (if (c) then (true) else (false)) else (false))
+00111000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (if (b) then (true) else (false))
+00111001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (b) then (true) else (false))
+00111010: if (a) then (if (c) then (false) else (true)) else (if (b) then (true) else (false))
+00111011: if (b) then (true) else (if (a) then (if (c) then (false) else (true)) else (false))
+00111100: if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (false))
+00111101: if (a) then (if (b) then (if (c) then (true) else (false)) else (true)) else (if (b) then (true) else (false))
+00111110: if (a) then (if (b) then (if (c) then (false) else (true)) else (true)) else (if (b) then (true) else (false))
+00111111: if (a) then (true) else (if (b) then (true) else (false))
+01000000: if (a) then (false) else (if (b) then (false) else (if (c) then (true) else (false)))
+01000001: if (c) then (if (a) then (if (b) then (true) else (false)) else (if (b) then (false) else (true))) else (false)
+01000010: if (a) then (if (b) then (if (c) then (false) else (true)) else (false)) else (if (b) then (false) else (if (c) then (true) else (false)))
+01000011: if (a) then (if (b) then (true) else (false)) else (if (b) then (false) else (if (c) then (true) else (false)))
+01000100: if (b) then (false) else (if (c) then (true) else (false))
+01000101: if (c) then (if (a) then (true) else (if (b) then (false) else (true))) else (false)
+01000110: if (b) then (if (a) then (if (c) then (false) else (true)) else (false)) else (if (c) then (true) else (false))
+01000111: if (b) then (if (a) then (true) else (false)) else (if (c) then (true) else (false))
+01001000: if (b) then (false) else (if (a) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01001001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (b) then (false) else (if (c) then (true) else (false)))
+01001010: if (a) then (if (c) then (false) else (true)) else (if (b) then (false) else (if (c) then (true) else (false)))
+01001011: if (a) then (if (b) then (true) else (if (c) then (false) else (true))) else (if (b) then (false) else (if (c) then (true) else (false)))
+01001100: if (b) then (false) else (if (a) then (true) else (if (c) then (true) else (false)))
+01001101: if (a) then (if (b) then (if (c) then (true) else (false)) else (true)) else (if (b) then (false) else (if (c) then (true) else (false)))
+01001110: if (c) then (if (b) then (false) else (true)) else (if (a) then (true) else (false))
+01001111: if (a) then (true) else (if (b) then (false) else (if (c) then (true) else (false)))
+01010000: if (a) then (false) else (if (c) then (true) else (false))
+01010001: if (c) then (if (a) then (if (b) then (true) else (false)) else (true)) else (false)
+01010010: if (a) then (if (b) then (if (c) then (false) else (true)) else (false)) else (if (c) then (true) else (false))
+01010011: if (a) then (if (b) then (true) else (false)) else (if (c) then (true) else (false))
+01010100: if (c) then (if (a) then (if (b) then (false) else (true)) else (true)) else (false)
+01010101: if (c) then (true) else (false)
+01010110: if (a) then (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))) else (if (c) then (true) else (false))
+01010111: if (c) then (true) else (if (a) then (if (b) then (true) else (false)) else (false))
+01011000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (if (c) then (true) else (false))
+01011001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (c) then (true) else (false))
+01011010: if (a) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))
+01011011: if (a) then (if (b) then (true) else (if (c) then (false) else (true))) else (if (c) then (true) else (false))
+01011100: if (a) then (if (b) then (false) else (true)) else (if (c) then (true) else (false))
+01011101: if (c) then (true) else (if (a) then (if (b) then (false) else (true)) else (false))
+01011110: if (a) then (if (b) then (if (c) then (false) else (true)) else (true)) else (if (c) then (true) else (false))
+01011111: if (a) then (true) else (if (c) then (true) else (false))
+01100000: if (a) then (false) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01100001: if (a) then (if (b) then (if (c) then (true) else (false)) else (false)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01100010: if (b) then (if (c) then (false) else (true)) else (if (a) then (false) else (if (c) then (true) else (false)))
+01100011: if (a) then (if (b) then (true) else (false)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01100100: if (b) then (if (a) then (false) else (if (c) then (false) else (true))) else (if (c) then (true) else (false))
+01100101: if (a) then (if (c) then (true) else (false)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01100110: if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false))
+01100111: if (b) then (if (a) then (true) else (if (c) then (false) else (true))) else (if (c) then (true) else (false))
+01101000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101010: if (a) then (if (c) then (false) else (true)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101011: if (a) then (if (b) then (true) else (if (c) then (false) else (true))) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101100: if (a) then (if (b) then (false) else (true)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101101: if (a) then (if (b) then (if (c) then (true) else (false)) else (true)) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01101110: if (b) then (if (c) then (false) else (true)) else (if (a) then (true) else (if (c) then (true) else (false)))
+01101111: if (a) then (true) else (if (b) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01110000: if (a) then (false) else (if (b) then (true) else (if (c) then (true) else (false)))
+01110001: if (a) then (if (b) then (if (c) then (true) else (false)) else (false)) else (if (b) then (true) else (if (c) then (true) else (false)))
+01110010: if (c) then (if (a) then (false) else (true)) else (if (b) then (true) else (false))
+01110011: if (b) then (true) else (if (a) then (false) else (if (c) then (true) else (false)))
+01110100: if (b) then (if (a) then (false) else (true)) else (if (c) then (true) else (false))
+01110101: if (c) then (true) else (if (a) then (false) else (if (b) then (true) else (false)))
+01110110: if (b) then (if (a) then (if (c) then (false) else (true)) else (true)) else (if (c) then (true) else (false))
+01110111: if (b) then (true) else (if (c) then (true) else (false))
+01111000: if (a) then (if (b) then (false) else (if (c) then (false) else (true))) else (if (b) then (true) else (if (c) then (true) else (false)))
+01111001: if (a) then (if (b) then (if (c) then (true) else (false)) else (if (c) then (false) else (true))) else (if (b) then (true) else (if (c) then (true) else (false)))
+01111010: if (a) then (if (c) then (false) else (true)) else (if (b) then (true) else (if (c) then (true) else (false)))
+01111011: if (b) then (true) else (if (a) then (if (c) then (false) else (true)) else (if (c) then (true) else (false)))
+01111100: if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (if (c) then (true) else (false)))
+01111101: if (c) then (true) else (if (a) then (if (b) then (false) else (true)) else (if (b) then (true) else (false)))
+01111110: if (a) then (if (b) then (if (c) then (false) else (true)) else (true)) else (if (b) then (true) else (if (c) then (true) else (false)))
+01111111: if (a) then (true) else (if (b) then (true) else (if (c) then (true) else (false)))
